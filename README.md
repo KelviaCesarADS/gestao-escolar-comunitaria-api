@@ -5,9 +5,10 @@ Projeto desenvolvido para a disciplina Fundamentos de Programação da faculdade
 * Caio Catão
 * Caio Martins
 * Gustavo Cassemiro
-* Kelvia SAntos
+* Kelvia Santos
 * Luís Felipe
 * Mateus Henrique
+* Priscila Pontes
 
 ### Nome da Líder
 * Kelvia Santos
