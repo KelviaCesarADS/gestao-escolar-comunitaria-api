@@ -47,8 +47,34 @@ def atualizar_turma(turmas):
         for t in turmas:
             if t["id"] == id_turma:
                 print(f"Editando: {t["Ano ou Serie da turma: "]}")
-                salvar_turmas(turmas)
-                print(f"A turma foi atualizada com sucesso!\n")
+                opcao = input(f"O que voçe gostaria de atualizar? [1] Ano ou serie\n [2] Sala\n [3] Turno\n [4] Capacidade\n [5] Sair\n")
+                match opcao:
+                    case 1:
+                        t['ano_turma'] = input("Informe a informação atualizada: ")
+                        salvar_turmas(turmas)
+                        print(f"A turma foi atualizada com sucesso!\n")
+                        continue
+                    case 2:
+                        t['sala'] = input("Informe a informação atualizada: ")
+                        salvar_turmas(turmas)
+                        print(f"A turma foi atualizada com sucesso!\n")
+                        continue
+                    case 3:
+                        t['turno'] = input("Informe a informação atualizada: ")
+                        salvar_turmas(turmas)
+                        print(f"A turma foi atualizada com sucesso!\n")
+                        continue
+                    case 4:
+                        t['capacidade'] = input("Informe a informação atualizada: ")
+                        salvar_turmas(turmas)
+                        print(f"A turma foi atualizada com sucesso!\n")
+                        continue
+                    case 5:
+                        print("Operação finalizada.")
+                        break
+                    case __:
+                        print("Opção inválida, tente novamente.")
+                        continue
                 return
         print(f"Essa turma não foi encontrada.\n")
     except ValueError:
