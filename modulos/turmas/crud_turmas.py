@@ -12,7 +12,7 @@ def carregar_turmas():
 def salvar_turmas():
     if os.path.exists(ARQUIVO_PASTA):
         with open(ARQUIVO_PASTA, "w", encoding="utf-8") as t:
-            return json.load(t)
+            return json.dump(t)
     return[]
 
 
