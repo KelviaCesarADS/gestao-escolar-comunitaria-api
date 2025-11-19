@@ -39,3 +39,56 @@ def menu():
 
 professor = carregar_professores()
 
+
+while True:
+    match (menu()):
+        
+        case 1:
+            print("sistema: ADD PROFESSOR...")
+            nome= input("\nDigite o nome desse professor: ")
+            idade = int(input("Digite sua idade: "))
+            materia = input("Digite a area que ele atua: ")
+            prof = {
+                'nome': nome,
+                'idade': idade,
+                'materia': materia
+            }
+        
+            professor.append(prof)
+            salvar_professores(professor)
+
+            print ("\n ----- Dados do Professor Adicionado -----")
+            print(f"Nome: {prof['nome']}")
+            print(f"Idade: {prof['idade']}")
+            print(f"Materia: {prof['materia']}")
+            print("\n PROFESSOR ADICIONADO!!!!")
+
+            cnt = input("Voce deseja continuar (S/N):")
+            if cnt == "n":
+                print("Fechando sistema....")
+                break
+            elif cnt == "s": 
+                continue
+            else:
+                print("Er00r...")
+
+        case 2:
+            print("sistema: DELETE PROFESSOR...")
+            prof_deletar = input("\nDigite o nome do professor que voçe quer retirar do sitema: ")
+            for prof in professor:
+                if prof['nome'].lower() == prof_deletar.lower():
+                    professor.remove(prof)
+                    salvar_professores(professor)
+                    print("----RESUMO DO PROF----")
+                    print(f"Nome: {prof['nome']}")
+                    print(f"Idade: {prof['idade']}")
+                    print(f"Materia: {prof['materia']}")
+                    print("-----------------------------")
+                    print(f"\nProfessor {prof_deletar} removido com sucesso.")
+                    continue
+                else:
+                    print(f"\nProfessor {prof_deletar} não encontrado.....")
+                    print("Err0r...")
+                    break
+
+
