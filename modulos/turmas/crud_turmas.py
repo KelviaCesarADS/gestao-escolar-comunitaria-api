@@ -15,38 +15,41 @@ def salvar_turmas():
             return json.dump(t)
     return[]
 
-def menu():
+def menu_turmas():
     print(f"--Menu administrativo Turmas--\n")
     opcao = input(int(print(f"\nVocê gostaria de: \n[1] Cadastrar nova turma\n[2] Atualizar uma turma\n[3]Deletar uma turma\n[4] Listar turmas")))
-    match opcao:
-        case 1:
-            print("Você escolheu cadastrar uma nova turma.")
-            cadastrar_turmas()
-        case 2:
-            print("Você escolheu atualizar uma turma.")
-            atualizar_turma()
-        case 3:
-            print("Você escolheu deletar uma turma.")
-            deletar_turma()
-        case 4:
-            print("Você escolheu listar as turmas")
-            opcao = input(int("\nVocê gostaria de:\n[1] listar uma turma\n[2]Listar todas as turmas"))
-            while True:
-                if opcao == 1:
-                    Ler_tdsturmas()
-                elif opcao == 2:
-                    ler_umaturma()
-                else:
-                    opcao = input(int(print("Opção inválida, tente novamente.")))
-                    continue              
-        case 5:
-            print("Você escolheu sair.")
-            return
-        case __:
-            print("Opção inválida")
-            return
-
-
+    while True:    
+        match opcao:
+            case 1:
+                print("Você escolheu cadastrar uma nova turma.")
+                cadastrar_turmas()
+                continue
+            case 2:
+                print("Você escolheu atualizar uma turma.")
+                atualizar_turma()
+                continue
+            case 3:
+                print("Você escolheu deletar uma turma.")
+                deletar_turma()
+                continue
+            case 4:
+                print("Você escolheu listar as turmas")
+                opcao = input(int("\nVocê gostaria de:\n[1] listar uma turma\n[2]Listar todas as turmas"))
+                while True:
+                    if opcao == 1:
+                        Ler_tdsturmas()
+                    elif opcao == 2:
+                        ler_umaturma()
+                    else:
+                        opcao = input(int(print("Opção inválida, tente novamente.")))
+                        continue
+                continue       
+            case 5:
+                print("Você escolheu sair.")
+                break
+            case __:
+                print("Opção inválida")
+                continue
 
 def deletar_turma(turmas):
     carregar_turmas(turmas)
