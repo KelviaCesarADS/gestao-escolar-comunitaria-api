@@ -1,4 +1,30 @@
-professor = []
+import json
+import os 
+
+
+diretorio_script = os.path.dirname(os.path.abspath(__file__))
+professor = [] 
+armaze_prof = os.path.join(diretorio_script, 'professores.json')
+
+
+def carregar_professores():
+    if os.path.exists(armaze_prof):
+        try:
+            with open(armaze_prof, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, Exception):
+            print("Aviso: Arquivo de dados JSON vazio ou inválido. Iniciando com lista vazia.")
+            return []
+    return []
+
+def salvar_professores(lista_professores):
+    try:
+        with open(armaze_prof, 'w', encoding='utf-8') as f:
+            json.dump(lista_professores, f, indent=4, ensure_ascii=False) 
+    except Exception as e:
+        print(f"Erro ao salvar dados: {e}")
+
+
 
 def menu():
     print("---------SISTEMA OPERACIONAL----------")
@@ -11,41 +37,5 @@ def menu():
     return escolha
 
 
-while True:
-    match (menu()):
-        case 1:
-            prof = {}
-            print("sistema: ADD PROFESSOR...")
-            prof["nome"] = input("\nDigite o nome desse professor: ")
-            prof["idade"] = int(input("Digite sua idade: "))
-            prof["materia"] = input("Digite a area que ele atua: ")
-            professor.append(prof)
-
-            print ("\n ----- Dados dos Alunos -----")
-            print(f"Nome: {prof['nome']}")
-            print(f"Idade: {prof['idade']}")
-            print(f"Materia: {prof['materia']}")
-            print("\n PROFESSOR ADICIONADO!!!!")
-
-            cnt = input("Voce deseja continuar (S/N):")
-            if cnt == "n" or "N":
-                print("Fechando sistema....")
-                break
-            elif cnt == "S" or "s":
-                continue
-            else:
-                print("Er00r...")
-        case 2:
-            print("sistema: DELET PROFESSOR...")
-            deletar = ("deseja deletar o ultimo professor cadastrado??")
-            professor.pop(deletar)
-            print("Professor deletado do sistema!!!")
-            cnt = input("Voce deseja continuar (S/N):")
-            if cnt == "n" or "N":
-                print("Fechando sistema....")
-                break
-            elif cnt == "S" or "s":
-                continue
-            
-
+professor = carregar_professores()
 
