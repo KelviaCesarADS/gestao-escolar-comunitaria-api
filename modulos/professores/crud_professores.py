@@ -89,6 +89,7 @@ while True:
                 else:
                     print(f"\nProfessor {prof_deletar} não encontrado.....")
                     print("Err0r...")
-                    break
+                    
+
 
 
