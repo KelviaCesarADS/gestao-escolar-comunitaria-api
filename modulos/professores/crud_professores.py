@@ -160,4 +160,4 @@ while True:
             break
 
         case _:
-            print("\nOpção inválida. Digite um número de 1 a 5.")   
+            print("\nOpção inválida. Digite um número de 1 a 5.")
