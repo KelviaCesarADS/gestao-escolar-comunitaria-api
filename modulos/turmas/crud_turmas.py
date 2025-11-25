@@ -55,10 +55,31 @@ def menu_turmas():
 
 def cadastrar_turmas(turmas):
     print("\n---------CADASTRO DE TURMAS---------")
-    periodo = input("Informe o período da turma: ")
-    sala = int(input("Informe a sala: "))
-    turno = input("Informe o turno (Manhã/Tarde/Noite): ")
-    capacidade = int(input("Informe a capacidade da turma: "))
+    while True:
+        periodo = input("Informe o período da turma: (Ex: 2025.1)").strip()
+        if periodo != "":
+            break
+        print("O período não pode ficar vazio. Utilize o exemplo informado.")
+    while True:        
+        sala = int(input("Informe a sala: ")).strip()
+        if sala > 0:
+            break
+        else:
+            print("O número da sala deve ser maior que 0. Ex: Sala 101, 201, 301.")
+    turnos = ["manhã", "tarde", "noite"]
+    while True:
+        turno = input("Informe o turno (MANHÃ/TARDE/NOITE): ")
+        if turno in turnos:
+            turno = turno.upper()
+            break
+        else:
+            print("Turno inválido. Utilize o exemplo informado!")
+    while True:            
+        capacidade = int(input("Informe a capacidade da turma: "))
+        if capacidade > 0:
+            break
+        else:
+            print("A capacidade da turma deve ser superior a 0. Informe novamente!")
 
     turma = {
         "cod_turma": len(turmas)+1, 
@@ -140,13 +161,35 @@ def atualizar_turma():
                     opcao = int(input("Digite sua escolha: "))
                     match opcao:
                         case 1:
-                            t['periodo'] = input("Nova informação: ")
+                            while True:
+                                t['periodo'] = input("Nova informação: (Ex:2025.1)")
+                                if t['periodo'] != "":
+                                    break
+                                else:
+                                    print("Informe o período novamente no formato indicado! (Ex:2026.6)")
                         case 2:
-                            t['sala'] = input("Nova informação: ")
+                            while True:
+                                t['sala'] = input("Nova informação: ")
+                                if t['sala'] > 0:
+                                    break
+                                else:
+                                    print("A sala deve ser um número positivo! Ex: 101, 204, 405")
                         case 3:
-                            t['turno'] = input("Nova informação: ")
+                            turnos = ["manhã", "tarde", "noite"]
+                            while True:
+                                t['turno'] = input("Nova informação: ")
+                                if (t['turno']) in turnos:
+                                    (t['turno']).upper()
+                                    break
+                                else:
+                                    print("Turnos devem ser MANHÂ, TARDE OU NOITE. Informe novamente!")
                         case 4:
-                            t['capacidade'] = input("Nova informação: ")
+                            while True:
+                                t['capacidade'] = input("Nova informação: ")
+                                if t['periodo'] > 0:
+                                    break
+                                else:
+                                    print("A capacidade deve ser acima de 0")
                         case 5:
                             print("Operação finalizada.")
                             break
@@ -159,5 +202,3 @@ def atualizar_turma():
         print("Essa turma não foi encontrada.")
     except ValueError:
         print("Este ID é inválido.")
-
-menu_turmas()

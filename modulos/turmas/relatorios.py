@@ -1,4 +1,4 @@
-from .modulos.turmas.crud_turmas import carregar_turmas
+from modulos.turmas.crud_turmas import carregar_turmas
 
 def menu_relatorioturma():
     while True:
@@ -12,13 +12,16 @@ def menu_relatorioturma():
         match opcao:
             case 1:
                 print("-- Relatório Turmas por ano --")
-                relatorio_anoturma()
+                relatorio_periodoturma()
             case 2:
                 print("-- Relatório Salas alocadas --")
+                relatorio_salas()
             case 3:
                 print("-- Relatório capacidade total --")
+                relatorio_capacidade()
             case 4:
                 print("-- Relátorio Turnos --")
+                relatorio_turnos()
             case 5:
                 print("Saindo...")
                 break
@@ -59,3 +62,4 @@ def relatorio_turnos():
         print("Não há turmas cadastradas.")
 
 
+menu_relatorioturma()
