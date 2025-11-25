@@ -45,11 +45,11 @@ while True:
         case 1:
             print("sistema: ADD PROFESSOR...")
             nome= input("\nDigite o nome desse professor: ")
-            idade = int(input("Digite sua idade: "))
+            turno = input("Digite sue turno: ")
             materia = input("Digite a area que ele atua: ")
             prof = {
                 'nome': nome,
-                'idade': idade,
+                'turno': turno,
                 'materia': materia
             }
         
@@ -59,7 +59,7 @@ while True:
 
             print ("\n ----- Dados do Professor Adicionado -----")
             print(f"Nome: {prof['nome']}")
-            print(f"Idade: {prof['idade']}")
+            print(f"Turno: {prof['turno']}")
             print(f"Materia: {prof['materia']}")
             print("\n PROFESSOR ADICIONADO!!!!")
 
@@ -82,7 +82,7 @@ while True:
                     salvar_professores(professor)
                     print("----RESUMO DO PROF----")
                     print(f"Nome: {prof['nome']}")
-                    print(f"Idade: {prof['idade']}")
+                    print(f"Turno: {prof['turno']}")
                     print(f"Materia: {prof['materia']}")
                     print("-----------------------------")
                     print(f"Professor {prof_deletar} removido com sucesso.")
@@ -91,76 +91,73 @@ while True:
                     print(f"\nProfessor {prof_deletar} não encontrado.....")
                     print("Err0r...")
         case 3:
-            print("\n ----- CONSULTA DE PROFESSORES -----")
+            print("\n----- SISTEMA: LISTAR PROFESSORES -----")
+            print(f"[DEBUG] Conteúdo da lista: {professor}") 
             
             if not professor:
-                print(" Ops! Nossa base de dados está vazia por enquanto.")
-                print("Dica: Vá na opção 1 para cadastrar alguém.")
+                print("Nenhum professor cadastrado (Lista Vazia).")
             else:
-                print(f"Encontrei {len(professor)} professor(es) cadastrado(s):")
                 for i, prof in enumerate(professor):
-                    print(f"\n Ficha do Professor #{i+1}")
-                    print(f"   Nome:    {prof.get('nome', 'Sem nome')}")
-                    print(f"   Idade:   {prof.get('idade', 'Não informada')}")
-                    print(f"   Matéria: {prof.get('materia', 'Não informada')}")
-                    print("   " + "-"*30) 
+                    print(f"\nPROFESSOR #{i+1}")
+                    print(f"Nome: {prof.get('nome', 'N/A')}")
+                    print(f"Turno: {prof.get('turno', 'N/A')}")
+                    print(f"Matéria: {prof.get('materia', 'N/A')}")
+                    print("-----------------------------")
 
-            print("\n------------------------------------------------")
-            cnt = input("Gostaria de realizar outra operação? [S]im / [N]ão: ").lower()
+            cnt = input("\nVoce deseja continuar (S/N): ").lower()
             if cnt == "n":
-                print("\nObrigado por usar o sistema! Até a próxima. ")
+                print("Fechando sistema....")
                 break
             elif cnt == "s": 
                 continue
             else:
-                print("Não entendi, mas vou te levar de volta ao menu principal.")
+                print("Opção inválida. Voltando ao menu.")
 
         case 4:
-            print("\n ----- ATUALIZAÇÃO DE DADOS -----")
-            prof_atualizar = input("Qual o nome do professor que você quer editar? ")
+            print("\n----- SISTEMA: ATUALIZAR PROFESSOR -----")
+            prof_atualizar = input("Digite o nome do professor que deseja atualizar: ")
             encontrado = False
             
             for prof in professor:
                 if prof['nome'].lower() == prof_atualizar.lower():
                     encontrado = True
-                    print(f"\n Achei! Vamos editar os dados de: {prof['nome']}")
-                    print(" DICA: Pressione ENTER vazio se não quiser mudar o valor atual.")
-                
-                    novo_nome = input(f"   Novo Nome (Atual: {prof['nome']}): ")
+                    print(f"\nProfessor {prof['nome']} encontrado.")
+                    print("Digite os novos dados (ou aperte ENTER para manter o atual):")
+                    
+                    novo_nome = input(f"Novo Nome ({prof['nome']}): ")
                     if novo_nome:
                         prof['nome'] = novo_nome
 
-                    nova_idade = input(f"   Nova Idade (Atual: {prof['idade']}): ")
-                    if nova_idade:
+                    nova_turno = input(f"Novo Turno ({prof['turno']}): ")
+                    if nova_turno:
                         try:
-                            prof['idade'] = int(nova_idade)
+                            prof['turno'] = (nova_turno)
                         except ValueError:
-                            print("     Ops, idade precisa ser número. Mantive a antiga.")
+                            print("Erro: o turno não pode ser um número.")
 
-                    nova_materia = input(f"   Nova Matéria (Atual: {prof['materia']}): ")
+                    nova_materia = input(f"Nova Matéria ({prof['materia']}): ")
                     if nova_materia:
                         prof['materia'] = nova_materia
 
                     salvar_professores(professor)
-                    print("\n Sucesso! As informações foram atualizadas.")
+                    print("\nProfessor atualizado com sucesso!")
                     break 
             
             if not encontrado:
-                print(f"Poxa, não encontrei ninguém com o nome '{prof_atualizar}'.")
+                print(f"Professor '{prof_atualizar}' não encontrado.")
 
-            print("\n------------------------------------------------")
-            cnt = input("Gostaria de realizar outra operação? [S]im / [N]ão: ").lower()
+            cnt = input("\nVoce deseja continuar (S/N): ").lower()
             if cnt == "n":
-                print("\nObrigado por usar o sistema! Até a próxima. 👋")
+                print("Fechando sistema....")
                 break
             elif cnt == "s": 
                 continue
             else:
-                print("Não entendi, mas vou te levar de volta ao menu principal.")
+                print("Opção inválida. Voltando ao menu.")
 
         case 5:
-            print("\n Encerrando o sistema... Tenha um bom dia!")
+            print("\nFECHANDO SISTEMA....")
             break
 
         case _:
-            print("\n Essa opção não existe. Por favor, escolha um número entre 1 e 5.")
+            print("\nOpção inválida. Digite um número de 1 a 5.")   
