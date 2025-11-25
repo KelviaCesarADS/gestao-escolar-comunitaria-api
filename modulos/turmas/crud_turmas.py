@@ -16,13 +16,13 @@ def salvar_turmas(turmas):
 
 def menu_turmas():
     print("--Menu administrativo Turmas--")
-    print("Você gostaria de: ")
-    print("[1] Cadastrar nova turma")
-    print("[2] Atualizar uma turma")
-    print("[3]Deletar uma turma")
-    print("[4] Listar turmas")
-    print("[5] Sair")
     while True:
+        print("Você gostaria de: ")
+        print("[1] Cadastrar nova turma")
+        print("[2] Atualizar uma turma")
+        print("[3] Deletar uma turma")
+        print("[4] Listar turmas")
+        print("[5] Sair")
         opcao = int(input("Informe sua escolha: "))
         match opcao:
             case 1:
@@ -42,7 +42,7 @@ def menu_turmas():
                 while True:
                     opcao = int(input("Digite sua escolha: "))
                     if opcao == 1:
-                        Ler_tdsturmas()
+                        ler_tdsturmas()
                     elif opcao == 2:
                         ler_umaturma()
                     else:
@@ -52,8 +52,51 @@ def menu_turmas():
                 break
             case __:
                 print("Opção inválida")
-    
 
+def cadastrar_turmas(turmas):
+    print("\n---------CADASTRO DE TURMAS---------")
+    ano_turma = input("Informe o ano/série da turma: ")
+    sala = int(input("Informe a sala: "))
+    turno = input("Informe o turno (Manhã/Tarde/Noite): ")
+    capacidade = int(input("Informe a capacidade da turma: "))
+
+    turma = {
+        "cod_turma": len(turmas)+1, 
+        "ano_turma": ano_turma,
+        "sala": sala,
+        "turno": turno,
+        "capacidade": capacidade
+    }
+
+    turmas.append(turma)
+    salvar_turmas(turmas)
+    print(f"Turma {turma['cod_turma']} cadastrada!")
+
+
+def ler_tdsturmas(turmas):
+    if not turmas:
+        print("Nenhuma turma cadastrada!")
+        return
+    
+    print("Listando turmas...: ")
+    for t in turmas:
+        print(f"ID: {t['cod_turma']} - {t['ano_turma']} - {t['sala']} - {t['turno']} - {t['capacidade']}")
+
+def ler_umaturma(turmas):
+    if not turmas:
+        print("Nenhuma turma cadastrada!")
+        return
+    
+    try:
+        cod_turma = int(input("Informe o código da turma: "))
+        for t in turmas:
+            if t['cod_turma'] == cod_turma:
+                print(f"Ano/Série da turma: {t['ano_turma']} - Sala: {t['sala']} - Turno: {t['turno']} - Capacidade: {t['capacidade']}\n")
+                return
+            print("Turma não encontrada!\n")
+    except ValueError:
+        print("Código inválido!\n")
+       
 def deletar_turma():
     turmas = carregar_turmas()
     if not turmas:
@@ -85,34 +128,34 @@ def atualizar_turma():
         cod_turma = int(input("Informe o ID da turma que será atualizada: "))
         for t in turmas:
             if t["cod_turma"] == cod_turma:
-                print(f"Editando: {t['ano_turma']}")
-                print("O que você gostaria de atualizar?")
-                print("[1] Ano ou série")
-                print("[2] Sala")
-                print("[3] Turno")
-                print("[4] Capacidade")
-                print("[5] Sair")
+                print(f"Editando turma de ano\serie {t['ano_turma']} e sala {t['sala']}")
+                while True:
+                    print("O que você gostaria de atualizar?")
+                    print("[1] Ano ou série")
+                    print("[2] Sala")
+                    print("[3] Turno")
+                    print("[4] Capacidade")
+                    print("[5] Finalizar e salvar")
 
-                opcao = int(input("Digite sua escolha: "))
-                match opcao:
-                    case 1:
-                        t['ano_turma'] = input("Nova informação: ")
-                    case 2:
-                        t['sala'] = input("Nova informação: ")
-                    case 3:
-                        t['turno'] = input("Nova informação: ")
-                    case 4:
-                        t['capacidade'] = input("Nova informação: ")
-                    case 5:
-                        print("Operação finalizada.")
-                        return
-                    case _:
-                        print("Opção inválida.")
-                        return
+                    opcao = int(input("Digite sua escolha: "))
+                    match opcao:
+                        case 1:
+                            t['ano_turma'] = input("Nova informação: ")
+                        case 2:
+                            t['sala'] = input("Nova informação: ")
+                        case 3:
+                            t['turno'] = input("Nova informação: ")
+                        case 4:
+                            t['capacidade'] = input("Nova informação: ")
+                        case 5:
+                            print("Operação finalizada.")
+                            break
+                        case _:
+                            print("Opção inválida.")
 
-                salvar_turmas(turmas)
-                print("Turma atualizada com sucesso!")
-                return
+                    salvar_turmas(turmas)
+                    print("Turma atualizada com sucesso!")
+                    return
         print("Essa turma não foi encontrada.")
     except ValueError:
         print("Este ID é inválido.")

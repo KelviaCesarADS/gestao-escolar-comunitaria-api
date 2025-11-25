@@ -1,9 +1,9 @@
 [
     {
         "cod_turma": 1,
-        "ano_turma": "231321",
-        "sala": 321321,
-        "turno": "321321",
-        "capacidade": 321321
+        "ano_turma": "5",
+        "sala": 201,
+        "turno": "noite",
+        "capacidade": 70
     }
 ]
