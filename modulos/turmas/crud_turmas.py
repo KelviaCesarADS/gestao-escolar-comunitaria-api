@@ -55,14 +55,14 @@ def menu_turmas():
 
 def cadastrar_turmas(turmas):
     print("\n---------CADASTRO DE TURMAS---------")
-    ano_turma = input("Informe o ano/série da turma: ")
+    periodo = input("Informe o período da turma: ")
     sala = int(input("Informe a sala: "))
     turno = input("Informe o turno (Manhã/Tarde/Noite): ")
     capacidade = int(input("Informe a capacidade da turma: "))
 
     turma = {
         "cod_turma": len(turmas)+1, 
-        "ano_turma": ano_turma,
+        "periodo": periodo,
         "sala": sala,
         "turno": turno,
         "capacidade": capacidade
@@ -80,7 +80,7 @@ def ler_tdsturmas(turmas):
     
     print("Listando turmas...: ")
     for t in turmas:
-        print(f"ID: {t['cod_turma']} - {t['ano_turma']} - {t['sala']} - {t['turno']} - {t['capacidade']}")
+        print(f"ID: {t['cod_turma']} - {t['periodo']} - {t['sala']} - {t['turno']} - {t['capacidade']}")
 
 def ler_umaturma(turmas):
     if not turmas:
@@ -91,7 +91,7 @@ def ler_umaturma(turmas):
         cod_turma = int(input("Informe o código da turma: "))
         for t in turmas:
             if t['cod_turma'] == cod_turma:
-                print(f"Ano/Série da turma: {t['ano_turma']} - Sala: {t['sala']} - Turno: {t['turno']} - Capacidade: {t['capacidade']}\n")
+                print(f" Período da turma: {t['periodo']} - Sala: {t['sala']} - Turno: {t['turno']} - Capacidade: {t['capacidade']}\n")
                 return
             print("Turma não encontrada!\n")
     except ValueError:
@@ -128,10 +128,10 @@ def atualizar_turma():
         cod_turma = int(input("Informe o ID da turma que será atualizada: "))
         for t in turmas:
             if t["cod_turma"] == cod_turma:
-                print(f"Editando turma de ano\serie {t['ano_turma']} e sala {t['sala']}")
+                print(f"Editando turma de ano\serie {t['periodo']} e sala {t['sala']}")
                 while True:
                     print("O que você gostaria de atualizar?")
-                    print("[1] Ano ou série")
+                    print("[1] Período")
                     print("[2] Sala")
                     print("[3] Turno")
                     print("[4] Capacidade")
@@ -140,7 +140,7 @@ def atualizar_turma():
                     opcao = int(input("Digite sua escolha: "))
                     match opcao:
                         case 1:
-                            t['ano_turma'] = input("Nova informação: ")
+                            t['periodo'] = input("Nova informação: ")
                         case 2:
                             t['sala'] = input("Nova informação: ")
                         case 3:

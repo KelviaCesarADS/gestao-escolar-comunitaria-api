@@ -6,7 +6,8 @@ def menu_relatorioturma():
         print("[1] Relatório Turmas por ano")
         print("[2] Relatório Salas alocadas")
         print("[3] Relatório Capacidade total de turmas")
-        print("[4] Sair")
+        print("[4] Relatório Turnos")
+        print("[5] Sair")
         opcao = int(input("Digite sua escolha: "))
         match opcao:
             case 1:
@@ -17,23 +18,25 @@ def menu_relatorioturma():
             case 3:
                 print("-- Relatório capacidade total --")
             case 4:
+                print("-- Relátorio Turnos --")
+            case 5:
                 print("Saindo...")
                 break
             case __:
                 print("Opção invalida! Tente novamente.")
 
-def relatorio_anoturma():
+def relatorio_periodoturma():
     turmas = carregar_turmas()
     if not turmas:
         print("Não há turmas cadastradas.")
         return
-    ano_turma = {}
+    periodo = {}
     for t in turmas:
-        ano_turma = t['ano_turma'].title()
-        ano_turma[ano_turma] = ano_turma.get(ano_turma, 0) + 1
+        periodo = t['periodo'].title()
+        periodo[periodo] = periodo.get(periodo, 0) + 1
     print("Quantidade de turmas por ano:")
-    for ano_turma, quantidade in ano_turma.items():
-        print(f"{ano_turma} : {quantidade}")
+    for periodo, quantidade in periodo.items():
+        print(f"{periodo} : {quantidade}")
         print()
 
 def relatorio_salas():
@@ -47,7 +50,12 @@ def relatorio_capacidade():
     turmas = carregar_turmas()
     if not turmas:
         print("Não há turmas cadastradas.")
-    capacidade = sum(t{"capacidade"} for t in turmas)
-    print(f"A quantidade de alunos registrados em turmas é: {capacidade}")
+    soma = sum(t["capacidade"] for t in turmas)
+    print(f"A quantidade de alunos registrados em turmas é: {soma}")
+
+def relatorio_turnos():
+    turmas = carregar_turmas()
+    if not turmas:
+        print("Não há turmas cadastradas.")
 
 

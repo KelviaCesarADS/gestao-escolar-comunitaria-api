@@ -1,7 +1,7 @@
 [
     {
         "cod_turma": 1,
-        "ano_turma": "5",
+        "periodo": "5",
         "sala": 201,
         "turno": "noite",
         "capacidade": 70
