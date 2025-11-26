@@ -1,4 +1,4 @@
-from modulos.turmas.crud_turmas import carregar_turmas
+from crud_turmas import carregar_turmas
 
 def menu_relatorioturma():
     while True:
@@ -33,33 +33,45 @@ def relatorio_periodoturma():
     if not turmas:
         print("Não há turmas cadastradas.")
         return
-    periodo = {}
+    periodos = {}
     for t in turmas:
-        periodo = t['periodo'].title()
-        periodo[periodo] = periodo.get(periodo, 0) + 1
-    print("Quantidade de turmas por ano:")
-    for periodo, quantidade in periodo.items():
-        print(f"{periodo} : {quantidade}")
-        print()
+        periodo = t.get('periodo').title()
+        periodos[periodo] = periodos.get(periodo, 0) + 1
+
+    print("-- Quantidade de turmas por período/ano --")
+    for periodo, quantidade in periodos.items():
+        print(f"{periodo}: {quantidade}")
+    print()
 
 def relatorio_salas():
     turmas = carregar_turmas()
     if not turmas:
         print("Não há turmas cadastradas.")
         return
-    print(f"Total de salas alocadas: {len(turmas)}")
+    print(f"-- Total de salas alocadas: {len(turmas)} --")
 
 def relatorio_capacidade():
     turmas = carregar_turmas()
     if not turmas:
         print("Não há turmas cadastradas.")
+        return
     soma = sum(t["capacidade"] for t in turmas)
-    print(f"A quantidade de alunos registrados em turmas é: {soma}")
+    print(f"-- A capacidade total de alunos em turmas alocadas é: {soma} --")
 
 def relatorio_turnos():
     turmas = carregar_turmas()
+
     if not turmas:
         print("Não há turmas cadastradas.")
+        return
 
+    turnos = {}
 
-menu_relatorioturma()
+    for turma in turmas:
+        turno = turma.get("turno", "Não informado").title()
+        turnos[turno] = turnos.get(turno, 0) + 1
+
+    print("-- Quantidade de turmas por turno --")
+    for turno, quantidade in turnos.items():
+        print(f"{turno}: {quantidade}")
+    print()
