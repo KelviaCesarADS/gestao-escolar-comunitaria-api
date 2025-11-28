@@ -175,11 +175,10 @@ def atualizar_turma():
                                 else:
                                     print("A sala deve ser um número positivo! Ex: 101, 204, 405")
                         case 3:
-                            turnos = ["manhã", "tarde", "noite"]
+                            turnos = ["MANHÃ", "TARDE", "NOITE"]
                             while True:
-                                t['turno'] = input("Nova informação: ")
+                                t['turno'] = input("Nova informação (MANHÃ/TARDE/NOITE): ")
                                 if (t['turno']) in turnos:
-                                    (t['turno']).upper()
                                     break
                                 else:
                                     print("Turnos devem ser MANHÂ, TARDE OU NOITE. Informe novamente!")
