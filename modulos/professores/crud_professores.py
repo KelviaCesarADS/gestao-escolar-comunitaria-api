@@ -161,4 +161,3 @@ while True:
 
         case _:
             print("\nOpção inválida. Digite um número de 1 a 5.")
-            

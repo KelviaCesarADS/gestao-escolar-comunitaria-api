@@ -1,0 +1,9 @@
+[
+    {
+        "cod_turma": 1,
+        "periodo": "5",
+        "sala": 201,
+        "turno": "noite",
+        "capacidade": 70
+    }
+]
