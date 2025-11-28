@@ -1,6 +1,4 @@
 import subprocess
-import sys
-import os
 
 def cabecalho(msg):
     """Exibe um cabeçalho formatado"""

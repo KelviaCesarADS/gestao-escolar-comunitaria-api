@@ -29,7 +29,7 @@ Sistema completo de gestão escolar desenvolvido em Python, com módulos indepen
 ## ⚠️ Requisitos
 
 - **Python 3.10 ou superior** (devido ao uso de `match/case`)
-- Sistema testado com Python 3.14.0
+- Sistema testado com Python 3.14.0, 3.12.3
 
 ### Verificar versão do Python
 
