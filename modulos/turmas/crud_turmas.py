@@ -27,7 +27,8 @@ def menu_turmas():
         match opcao:
             case 1:
                 print("Você escolheu cadastrar uma nova turma.")
-                cadastrar_turmas()
+                turmas = carregar_turmas()
+                cadastrar_turmas(turmas)
             case 2:
                 print("Você escolheu atualizar uma turma.")
                 atualizar_turma()
@@ -42,9 +43,9 @@ def menu_turmas():
                 while True:
                     opcao = int(input("Digite sua escolha: "))
                     if opcao == 1:
-                        ler_tdsturmas()
+                        ler_tdsturmas(turmas)
                     elif opcao == 2:
-                        ler_umaturma()
+                        ler_umaturma(turmas)
                     else:
                         opcao = input(int(print("Opção inválida, tente novamente.")))
             case 5:
@@ -61,16 +62,15 @@ def cadastrar_turmas(turmas):
             break
         print("O período não pode ficar vazio. Utilize o exemplo informado.")
     while True:        
-        sala = int(input("Informe a sala: ")).strip()
+        sala = int(input("Informe a sala: "))
         if sala > 0:
             break
         else:
             print("O número da sala deve ser maior que 0. Ex: Sala 101, 201, 301.")
-    turnos = ["manhã", "tarde", "noite"]
+    turnos = ["MANHÃ", "TARDE", "NOITE"]
     while True:
         turno = input("Informe o turno (MANHÃ/TARDE/NOITE): ")
         if turno in turnos:
-            turno = turno.upper()
             break
         else:
             print("Turno inválido. Utilize o exemplo informado!")
@@ -205,3 +205,4 @@ def atualizar_turma():
 
 if __name__ == "__main__":
     menu_turmas()
+    
