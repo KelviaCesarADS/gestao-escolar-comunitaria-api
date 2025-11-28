@@ -1,6 +1,6 @@
 lista_de_alunos = []
 num_matricula = 1
-import json # Importe o módulo JSON no topo do seu script]
+import json
 import os
 NOME_ARQUIVO = os.path.join(os.path.dirname(__file__), "alunos.json")
 
@@ -11,20 +11,16 @@ def carregar_dados():
         with open(NOME_ARQUIVO, 'r', encoding='utf-8') as f:
             lista_de_alunos = json.load(f)
             
-            # Garante que a próxima matrícula continue a sequência correta
             if lista_de_alunos:
-                # Pega a maior matrícula da lista e soma 1
                 num_matricula = max(aluno['Matricula'] for aluno in lista_de_alunos) + 1
             else:
                 num_matricula = 1
                 
     except FileNotFoundError:
-        # Se o arquivo não existir (primeira execução), usa a lista vazia
         lista_de_alunos = []
         num_matricula = 1
         
     except json.JSONDecodeError:
-        # Se o arquivo estiver corrompido, inicia com lista vazia
         print(f"Aviso: Arquivo '{NOME_ARQUIVO}' inválido. Iniciando com lista vazia.")
         lista_de_alunos = []
         num_matricula = 1
@@ -33,20 +29,17 @@ def salvar_dados():
     """Salva a lista de alunos atual no arquivo JSON."""
     try:
         with open(NOME_ARQUIVO, 'w', encoding='utf-8') as f:
-            # indent=4 torna o arquivo JSON legível para humanos
             json.dump(lista_de_alunos, f, indent=4)
         print(f"Dados salvos com sucesso em '{NOME_ARQUIVO}'.")
     except Exception as e:
         print(f"Erro ao salvar dados: {e}")
 
-# Fazer um cabeçalho organizado
 def cabecalho(msg):
     tam = len(msg) + 4
     print("-"*tam)
     print(f"  {msg}")
     print("-"*tam)
 
-# Criando a lista de alunos matriculados
 def adicionar_alunos():
     global num_matricula
     cabecalho("Matriculando Aluno")
@@ -71,7 +64,6 @@ def adicionar_alunos():
     print(f"\nO aluno {nome_aluno} foi matriculado com sucesso!")
     salvar_dados()
 
-# Visualizar a lista de alunos matriculados
 def ver_dados_alunos():
     cabecalho("Lista de Alunos Matriculados")
 
@@ -82,7 +74,6 @@ def ver_dados_alunos():
     for aluno in lista_de_alunos:
         print(f"Matricula: {aluno["Matricula"]} | Nome: {aluno["Nome"]} | Curso: {aluno["Curso"]} | Periodo: {aluno["Periodo"]}")
 
-#Atualizar matrícula (Melhorar a opção de quando colocar um número inválido!)
 def atualizar_lista_alunos():
     ver_dados_alunos()
 
@@ -100,20 +91,20 @@ def atualizar_lista_alunos():
             break
     
     if aluno_encontrado:
-        print(f"\nAluno encontrado: {aluno_encontrado["Nome"]} Mátricula: {aluno_encontrado["Matricula"]}")
+        print(f"\nAluno encontrado: {aluno_encontrado['Nome']} Mátricula: {aluno_encontrado['Matricula']}")
         print(" --- Insira os novos dados (Deixar em branco os que não quiser alterar! --- )")
 
-        novo_nome = input(f"Novo nome: ({aluno_encontrado["Nome"]}): ")
-        nova_idade = input(f"Nova Idade ({aluno_encontrado["Idade"]}): ")
-        novo_genero = input(f"Novo Gênero: ({aluno_encontrado["Genero"]}): ")
-        novo_curso = input(f"Novo Curso: ({aluno_encontrado["Curso"]}): ")
-        novo_periodo = input(f"Novo Periodo ({aluno_encontrado["Periodo"]}): ")
+        novo_nome = input(f"Novo nome: ({aluno_encontrado['Nome']}): ")
+        nova_idade = input(f"Nova Idade ({aluno_encontrado['Idade']}): ")
+        novo_genero = input(f"Novo Gênero: ({aluno_encontrado['Genero']}): ")
+        novo_curso = input(f"Novo Curso: ({aluno_encontrado['Curso']}): ")
+        novo_periodo = input(f"Novo Periodo ({aluno_encontrado['Periodo']}): ")
 
         if novo_nome:
             aluno_encontrado["Nome"] = novo_nome
             
         if nova_idade:
-            aluno_encontrado["Idade"] = nova_idade # Melhor seria adicionar validação aqui (se é número)
+            aluno_encontrado["Idade"] = nova_idade
             
         if novo_genero:
             aluno_encontrado["Genero"] = novo_genero
@@ -130,8 +121,7 @@ def atualizar_lista_alunos():
     else:
         print(f"\n Matrícula {matricula_procurada} não encontrada.")
 
-# Código de Mateus com modificações
-def buscar_alunos(lista_de_alunos): # Renomeado 'dados' para 'lista_de_alunos'
+def buscar_alunos(lista_de_alunos):
     cabecalho("Buscar Alunos")
     
     if not lista_de_alunos:
@@ -141,19 +131,16 @@ def buscar_alunos(lista_de_alunos): # Renomeado 'dados' para 'lista_de_alunos'
     buscar = input("Digite a matrícula ou nome para buscar: ").lower().strip()
     resultados = []
     
-    # Itera sobre a lista, não sobre um dicionário.
     for aluno in lista_de_alunos: 
-        matricula_str = str(aluno["Matricula"]) # Converte a matrícula para string para comparação
+        matricula_str = str(aluno["Matricula"])
         
-        # Correção das Chaves: aluno["nome"] -> aluno["Nome"]
         if buscar in matricula_str or buscar in aluno["Nome"].lower():
-            resultados.append(aluno) # Adiciona o dicionário do aluno encontrado
+            resultados.append(aluno)
             
     if resultados:
         print(f"\n{len(resultados)} resultado(s) encontrado(s):")
         
         for aluno in resultados:
-            # Correção das Chaves: 'matricula', 'nome', 'idade', 'turma' -> 'Matricula', 'Nome', 'Idade', 'Curso'
             print(f"Matrícula: {aluno['Matricula']} | Nome: {aluno['Nome']} | Idade: {aluno['Idade']} | Curso: {aluno['Curso']}")
             
     else:
@@ -168,17 +155,13 @@ def gerar_relatorio(lista_de_alunos):
         
     total_alunos = len(lista_de_alunos)
     
-    # Correção: idades devem ser convertidas para int para o cálculo (seus inputs são strings)
     idade_alunos = [int(aluno["Idade"]) for aluno in lista_de_alunos] 
     
     media_idade_alunos = sum(idade_alunos) / total_alunos if total_alunos > 0 else 0
     
-    # Renomeado 'turmas' para 'cursos' para corresponder aos seus dados
     contagem_cursos = {} 
     
-    # Itera sobre a lista, não sobre .values() de um dicionário.
     for aluno in lista_de_alunos: 
-        # Correção da Chave: aluno["turma"] -> aluno["Curso"]
         curso = aluno["Curso"] 
         
         contagem_cursos[curso] = contagem_cursos.get(curso, 0) + 1
@@ -187,7 +170,6 @@ def gerar_relatorio(lista_de_alunos):
     print(f" Média de idade: {media_idade_alunos:.1f} anos")
     
     print("\n Alunos por Curso:")
-    # Renomeado 'turmas' para 'contagem_cursos'
     for curso, qtd in contagem_cursos.items(): 
         print(f"  - {curso}: {qtd} aluno(s)")
     print("-" * 30)
@@ -196,7 +178,7 @@ def excluir_matricula():
     ver_dados_alunos()
     matricula_procurada = int(input("Digite o número de matricula que queira excluir: "))
     
-    aluno_removido = None # Inicializa a variável fora do loop (SOLUÇÃO 1)
+    aluno_removido = None
     indice_a_deletar = -1
 
     for i, aluno in enumerate(lista_de_alunos):
@@ -205,10 +187,8 @@ def excluir_matricula():
             break
             
     if indice_a_deletar != -1:
-        # AQUI garantimos que a variável 'aluno_removido' existe
         aluno_removido = lista_de_alunos.pop(indice_a_deletar)
         
-        # SOLUÇÃO 2: Só imprime a mensagem se o aluno foi encontrado e removido
         print(f"✅ O aluno {aluno_removido['Nome']} foi excluído da lista!")
         salvar_dados()
         
@@ -216,7 +196,6 @@ def excluir_matricula():
         print(f"❌ Matrícula {matricula_procurada} não encontrada.")
 
 carregar_dados()
-# Código Principal
 while True:
     cabecalho("Menu Principal")
     print("\n --- Selecione a opção desejada ---")
