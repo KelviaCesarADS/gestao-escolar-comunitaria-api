@@ -40,14 +40,14 @@ def menu_turmas():
                 print("Você gostaria de:")
                 print("[1] listar uma turma")
                 print("[2]Listar todas as turmas")
-                while True:
-                    opcao = int(input("Digite sua escolha: "))
-                    if opcao == 1:
-                        ler_tdsturmas(turmas)
-                    elif opcao == 2:
-                        ler_umaturma(turmas)
-                    else:
-                        opcao = input(int(print("Opção inválida, tente novamente.")))
+                turmas = carregar_turmas()
+                opcao_lista = int(input("Digite sua escolha: "))
+                if opcao_lista == 1:
+                    ler_umaturma(turmas)
+                elif opcao_lista == 2:
+                    ler_tdsturmas(turmas)
+                else:
+                    print("Opção inválida, tente novamente.")
             case 5:
                 print("Saindo...")
                 break
@@ -169,7 +169,7 @@ def atualizar_turma():
                                     print("Informe o período novamente no formato indicado! (Ex:2026.6)")
                         case 2:
                             while True:
-                                t['sala'] = input("Nova informação: ")
+                                t['sala'] = int(input("Nova informação: "))
                                 if t['sala'] > 0:
                                     break
                                 else:
@@ -185,8 +185,8 @@ def atualizar_turma():
                                     print("Turnos devem ser MANHÂ, TARDE OU NOITE. Informe novamente!")
                         case 4:
                             while True:
-                                t['capacidade'] = input("Nova informação: ")
-                                if t['periodo'] > 0:
+                                t['capacidade'] = int(input("Nova informação: "))
+                                if t['capacidade'] > 0:
                                     break
                                 else:
                                     print("A capacidade deve ser acima de 0")
@@ -205,4 +205,3 @@ def atualizar_turma():
 
 if __name__ == "__main__":
     menu_turmas()
-    
