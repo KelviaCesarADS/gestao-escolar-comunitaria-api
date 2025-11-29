@@ -1,4 +1,15 @@
-from crud_turmas import carregar_turmas
+import json
+import os
+
+ARQUIVO_PASTA = os.path.join(os.path.dirname(__file__), "turmas.json")
+
+def carregar_turmas():
+    try:
+        with open(ARQUIVO_PASTA, "r", encoding="utf-8") as arquivo:
+            return json.load(arquivo)
+    except FileNotFoundError:
+        return[]
+
 
 def menu_relatorioturma():
     while True:
