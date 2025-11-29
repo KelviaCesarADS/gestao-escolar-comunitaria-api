@@ -1,4 +1,4 @@
-echo "🌐 Iniciando Frontend da Gestão Escolar..."
+echo " Iniciando Frontend da Gestão Escolar..."
 echo ""
 
 cd frontend
