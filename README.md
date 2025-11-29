@@ -40,9 +40,6 @@ chmod +x executar.sh
 ./executar.sh
 # ou
 python3 main.py
-# ou
-python main.py
-```
 
 ## 🎯 Funcionalidades
 
