@@ -1,5 +1,6 @@
 import json
 import os
+from relatorios import menu_relatorioturma
 
 ARQUIVO_PASTA = os.path.join(os.path.dirname(__file__), "turmas.json")
 
@@ -22,7 +23,8 @@ def menu_turmas():
         print("[2] Atualizar uma turma")
         print("[3] Deletar uma turma")
         print("[4] Listar turmas")
-        print("[5] Sair")
+        print("[5] Relátorios das turmas")
+        print("[6] Sair")
         opcao = int(input("Informe sua escolha: "))
         match opcao:
             case 1:
@@ -49,6 +51,9 @@ def menu_turmas():
                 else:
                     print("Opção inválida, tente novamente.")
             case 5:
+                print("Acessando menu de relátorios da turma.")
+                menu_relatorioturma()
+            case 6:
                 print("Saindo...")
                 break
             case __:
