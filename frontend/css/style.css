@@ -28,7 +28,6 @@ body {
   padding: 20px;
 }
 
-/* Header */
 header {
   background: var(--white);
   box-shadow: var(--shadow);
@@ -46,7 +45,6 @@ header p {
   opacity: 0.7;
 }
 
-/* Dashboard Cards */
 .dashboard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -84,7 +82,6 @@ header p {
   margin-bottom: 20px;
 }
 
-/* Buttons */
 .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -147,7 +144,6 @@ header p {
   font-size: 0.9rem;
 }
 
-/* Info Section */
 .info-card {
   background: var(--white);
   padding: 30px;
@@ -175,7 +171,6 @@ header p {
   border-bottom: none;
 }
 
-/* Content Pages */
 .page-header {
   background: var(--white);
   padding: 20px;
@@ -199,7 +194,6 @@ header p {
   margin-bottom: 20px;
 }
 
-/* Forms */
 .form-group {
   margin-bottom: 20px;
 }
@@ -233,7 +227,6 @@ header p {
   margin-top: 20px;
 }
 
-/* Tables */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -269,7 +262,6 @@ tbody td {
   gap: 8px;
 }
 
-/* Search */
 .search-section {
   display: flex;
   gap: 10px;
@@ -284,7 +276,6 @@ tbody td {
   font-size: 1rem;
 }
 
-/* Stats */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -311,7 +302,6 @@ tbody td {
   font-weight: bold;
 }
 
-/* Alerts */
 .alert {
   padding: 15px 20px;
   border-radius: 8px;
@@ -337,7 +327,6 @@ tbody td {
   border-left: 4px solid var(--primary-color);
 }
 
-/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -389,7 +378,6 @@ tbody td {
   color: var(--danger-color);
 }
 
-/* Footer */
 footer {
   background: var(--white);
   padding: 20px;
@@ -405,7 +393,6 @@ footer p {
   font-size: 0.9rem;
 }
 
-/* Loading */
 .loading {
   text-align: center;
   padding: 40px;
@@ -417,7 +404,6 @@ footer p {
   font-size: 1.2rem;
 }
 
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 60px 20px;
@@ -425,14 +411,6 @@ footer p {
   opacity: 0.6;
 }
 
-.empty-state::before {
-  content: "📭";
-  font-size: 4rem;
-  display: block;
-  margin-bottom: 15px;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .dashboard {
     grid-template-columns: 1fr;
@@ -462,7 +440,6 @@ footer p {
   }
 }
 
-/* Utility Classes */
 .hidden {
   display: none !important;
 }

@@ -12,7 +12,6 @@ PROFESSORES_FILE = os.path.join(BASE_DIR, 'modulos', 'professores', 'professores
 TURMAS_FILE = os.path.join(BASE_DIR, 'modulos', 'turmas', 'turmas.json')
 
 def carregar_json(arquivo):
-    """Carrega dados de um arquivo JSON"""
     try:
         with open(arquivo, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -22,19 +21,16 @@ def carregar_json(arquivo):
         return []
 
 def salvar_json(arquivo, dados):
-    """Salva dados em um arquivo JSON"""
     with open(arquivo, 'w', encoding='utf-8') as f:
         json.dump(dados, f, indent=4, ensure_ascii=False)
 
 @app.route('/api/alunos', methods=['GET'])
 def listar_alunos():
-    """Lista todos os alunos"""
     alunos = carregar_json(ALUNOS_FILE)
     return jsonify(alunos), 200
 
 @app.route('/api/alunos/<int:matricula>', methods=['GET'])
 def buscar_aluno(matricula):
-    """Busca um aluno por matrícula"""
     alunos = carregar_json(ALUNOS_FILE)
     aluno = next((a for a in alunos if a['Matricula'] == matricula), None)
     
@@ -44,7 +40,6 @@ def buscar_aluno(matricula):
 
 @app.route('/api/alunos', methods=['POST'])
 def adicionar_aluno():
-    """Adiciona um novo aluno"""
     dados = request.json
     alunos = carregar_json(ALUNOS_FILE)
     
@@ -69,7 +64,6 @@ def adicionar_aluno():
 
 @app.route('/api/alunos/<int:matricula>', methods=['PUT'])
 def atualizar_aluno(matricula):
-    """Atualiza dados de um aluno"""
     dados = request.json
     alunos = carregar_json(ALUNOS_FILE)
     
@@ -94,7 +88,6 @@ def atualizar_aluno(matricula):
 
 @app.route('/api/alunos/<int:matricula>', methods=['DELETE'])
 def excluir_aluno(matricula):
-    """Exclui um aluno"""
     alunos = carregar_json(ALUNOS_FILE)
     
     aluno = next((a for a in alunos if a['Matricula'] == matricula), None)
@@ -109,7 +102,6 @@ def excluir_aluno(matricula):
 
 @app.route('/api/alunos/buscar', methods=['GET'])
 def buscar_alunos():
-    """Busca alunos por nome ou matrícula"""
     termo = request.args.get('termo', '').lower()
     alunos = carregar_json(ALUNOS_FILE)
     
@@ -122,7 +114,6 @@ def buscar_alunos():
 
 @app.route('/api/alunos/relatorio', methods=['GET'])
 def relatorio_alunos():
-    """Gera relatório dos alunos"""
     alunos = carregar_json(ALUNOS_FILE)
     
     if not alunos:
@@ -136,7 +127,6 @@ def relatorio_alunos():
     idades = [int(a['Idade']) for a in alunos]
     media_idade = sum(idades) / total
     
-    # Contagem por curso
     cursos = {}
     for aluno in alunos:
         curso = aluno['Curso']
@@ -150,13 +140,11 @@ def relatorio_alunos():
 
 @app.route('/api/professores', methods=['GET'])
 def listar_professores():
-    """Lista todos os professores"""
     professores = carregar_json(PROFESSORES_FILE)
     return jsonify(professores), 200
 
 @app.route('/api/professores/<int:id>', methods=['GET'])
 def buscar_professor(id):
-    """Busca um professor por ID"""
     professores = carregar_json(PROFESSORES_FILE)
     
     if 0 <= id < len(professores):
@@ -165,7 +153,6 @@ def buscar_professor(id):
 
 @app.route('/api/professores', methods=['POST'])
 def adicionar_professor():
-    """Adiciona um novo professor"""
     dados = request.json
     professores = carregar_json(PROFESSORES_FILE)
     
@@ -182,7 +169,6 @@ def adicionar_professor():
 
 @app.route('/api/professores/<int:id>', methods=['PUT'])
 def atualizar_professor(id):
-    """Atualiza dados de um professor"""
     dados = request.json
     professores = carregar_json(PROFESSORES_FILE)
     
@@ -203,7 +189,6 @@ def atualizar_professor(id):
 
 @app.route('/api/professores/<int:id>', methods=['DELETE'])
 def excluir_professor(id):
-    """Exclui um professor"""
     professores = carregar_json(PROFESSORES_FILE)
     
     if id < 0 or id >= len(professores):
@@ -217,13 +202,11 @@ def excluir_professor(id):
 
 @app.route('/api/turmas', methods=['GET'])
 def listar_turmas():
-    """Lista todas as turmas"""
     turmas = carregar_json(TURMAS_FILE)
     return jsonify(turmas), 200
 
 @app.route('/api/turmas/<int:cod_turma>', methods=['GET'])
 def buscar_turma(cod_turma):
-    """Busca uma turma por código"""
     turmas = carregar_json(TURMAS_FILE)
     turma = next((t for t in turmas if t['cod_turma'] == cod_turma), None)
     
@@ -233,11 +216,9 @@ def buscar_turma(cod_turma):
 
 @app.route('/api/turmas', methods=['POST'])
 def adicionar_turma():
-    """Adiciona uma nova turma"""
     dados = request.json
     turmas = carregar_json(TURMAS_FILE)
     
-    # Gera próximo código
     if turmas:
         proximo_codigo = max(t['cod_turma'] for t in turmas) + 1
     else:
@@ -258,7 +239,6 @@ def adicionar_turma():
 
 @app.route('/api/turmas/<int:cod_turma>', methods=['PUT'])
 def atualizar_turma(cod_turma):
-    """Atualiza dados de uma turma"""
     dados = request.json
     turmas = carregar_json(TURMAS_FILE)
     
@@ -281,7 +261,6 @@ def atualizar_turma(cod_turma):
 
 @app.route('/api/turmas/<int:cod_turma>', methods=['DELETE'])
 def excluir_turma(cod_turma):
-    """Exclui uma turma"""
     turmas = carregar_json(TURMAS_FILE)
     
     turma = next((t for t in turmas if t['cod_turma'] == cod_turma), None)
@@ -294,9 +273,101 @@ def excluir_turma(cod_turma):
     
     return jsonify({"mensagem": f"Turma {turma['periodo']} excluída com sucesso"}), 200
 
+@app.route('/api/turmas/relatorio', methods=['GET'])
+def relatorio_turmas():
+    turmas = carregar_json(TURMAS_FILE)
+    
+    if not turmas:
+        return jsonify({
+            "total": 0,
+            "total_salas": 0,
+            "capacidade_total": 0,
+            "periodos": {},
+            "turnos": {}
+        }), 200
+    
+    total = len(turmas)
+    total_salas = len(turmas)
+    capacidade_total = sum(t['capacidade'] for t in turmas)
+    
+    periodos = {}
+    for turma in turmas:
+        periodo = turma['periodo']
+        periodos[periodo] = periodos.get(periodo, 0) + 1
+    
+    turnos = {}
+    for turma in turmas:
+        turno = turma['turno']
+        turnos[turno] = turnos.get(turno, 0) + 1
+    
+    return jsonify({
+        "total": total,
+        "total_salas": total_salas,
+        "capacidade_total": capacidade_total,
+        "periodos": periodos,
+        "turnos": turnos
+    }), 200
+
+@app.route('/api/relatorio-geral', methods=['GET'])
+def relatorio_geral():
+    alunos = carregar_json(ALUNOS_FILE)
+    turmas = carregar_json(TURMAS_FILE)
+    
+    total_alunos = len(alunos)
+    total_turmas = len(turmas)
+    
+    media_idade = 0
+    if alunos:
+        idades = [int(a['Idade']) for a in alunos]
+        media_idade = sum(idades) / len(idades)
+    
+    alunos_por_turma = {}
+    alunos_sem_turma = []
+    
+    for aluno in alunos:
+        cod_turma = aluno.get('cod_turma')
+        if cod_turma:
+            if cod_turma not in alunos_por_turma:
+                alunos_por_turma[cod_turma] = []
+            alunos_por_turma[cod_turma].append({
+                "matricula": aluno['Matricula'],
+                "nome": aluno['Nome'],
+                "curso": aluno['Curso']
+            })
+        else:
+            alunos_sem_turma.append({
+                "matricula": aluno['Matricula'],
+                "nome": aluno['Nome'],
+                "curso": aluno['Curso']
+            })
+    
+    turmas_detalhadas = []
+    for turma in turmas:
+        cod = turma['cod_turma']
+        turmas_detalhadas.append({
+            "cod_turma": cod,
+            "periodo": turma['periodo'],
+            "sala": turma['sala'],
+            "turno": turma['turno'],
+            "capacidade": turma['capacidade'],
+            "alunos": alunos_por_turma.get(cod, []),
+            "total_alunos": len(alunos_por_turma.get(cod, []))
+        })
+    
+    return jsonify({
+        "resumo": {
+            "total_alunos": total_alunos,
+            "total_turmas": total_turmas,
+            "media_idade": round(media_idade, 1),
+            "alunos_com_turma": total_alunos - len(alunos_sem_turma),
+            "alunos_sem_turma": len(alunos_sem_turma)
+        },
+        "turmas": turmas_detalhadas,
+        "alunos_sem_turma": alunos_sem_turma
+    }), 200
+
 @app.route('/')
 def index():
-    """Rota raiz da API"""
     return jsonify({
         "mensagem": "API Gestão Escolar Comunitária",
         "versao": "1.0.0",
@@ -309,3 +380,4 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+    

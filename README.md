@@ -2,7 +2,7 @@
 
 > **Projeto Acadêmico** | CESAR School | Fundamentos da Programação | Python 🐍
 
-Sistema completo de gestão escolar desenvolvido em Python com **API REST (Flask)** e **Frontend Web (HTML/CSS/JavaScript)**, incluindo módulos para gerenciamento de **alunos**, **professores** e **turmas**. Projeto colaborativo que implementa operações CRUD completas com persistência de dados em JSON.
+Sistema de gestão escolar desenvolvido em Python com interface CLI para gerenciamento de **alunos**, **professores** e **turmas**. Implementa operações CRUD completas com persistência de dados em JSON.
 
 ## 👥 Equipe de Desenvolvimento
 
@@ -16,226 +16,250 @@ Sistema completo de gestão escolar desenvolvido em Python com **API REST (Flask
 
 ## 📋 Características
 
-- ✅ **API REST com Flask**: Backend completo com endpoints para todas as operações
-- ✅ **Frontend Web Moderno**: Interface amigável e responsiva
-- ✅ **CRUD Completo de Alunos**: Matrícula, listagem, atualização, busca, relatórios e exclusão
-- ✅ **CRUD Completo de Professores**: Cadastro, listagem, atualização e remoção
-- ✅ **CRUD Completo de Turmas**: Cadastro, listagem, busca, atualização e exclusão
-- ✅ **Persistência de Dados**: Todos os dados são salvos em arquivos JSON
-- ✅ **Sistema CLI Original**: Mantido para compatibilidade
-
-## 🏗️ Arquitetura do Projeto
-
-```
-gestao-escolar-comunitaria-api/
-├── backend/                    # API REST
-│   ├── app.py                 # Servidor Flask
-│   ├── requirements.txt       # Dependências Python
-│   ├── venv/                  # Ambiente virtual
-│   └── README.md             # Documentação da API
-│
-├── frontend/                  # Interface Web
-│   ├── index.html            # Página inicial
-│   ├── css/
-│   │   └── style.css         # Estilos
-│   ├── js/
-│   │   ├── alunos.js         # Lógica de alunos
-│   │   ├── professores.js    # Lógica de professores
-│   │   └── turmas.js         # Lógica de turmas
-│   └── pages/
-│       ├── alunos.html
-│       ├── professores.html
-│       └── turmas.html
-│
-├── modulos/                   # Dados compartilhados (CLI + API)
-│   ├── alunos/
-│   │   ├── alunos.json
-│   │   └── crud_alunos.py
-│   ├── professores/
-│   │   ├── professores.json
-│   │   └── crud_professores.py
-│   └── turmas/
-│       ├── turmas.json
-│       └── crud_turmas.py
-│
-├── main.py                    # Sistema CLI
-├── executar.sh               # Script CLI
-├── start-backend.sh          # Script para iniciar API
-├── start-frontend.sh         # Script para iniciar Frontend
-└── README.md                  # Este arquivo
-```
+- ✅ **Sistema CLI Interativo**: Menu completo no terminal
+- ✅ **CRUD Completo**: Gerenciamento de alunos, professores e turmas
+- ✅ **Persistência em JSON**: Dados salvos automaticamente
+- ✅ **Relatórios**: Geração de relatórios por módulo
 
 ## ⚠️ Requisitos
 
-- **Python 3.10 ou superior** (devido ao uso de `match/case`)
-- **pip** (gerenciador de pacotes Python)
-- Navegador web moderno (Chrome, Firefox, Safari, Edge)
-
-### Verificar versão do Python
-
-```bash
-python3 --version
-```
+- **Python 3.10 ou superior**
+- Verificar versão: `python3 --version`
 
 ## 🚀 Como Executar
 
-### ⚡ Início Rápido
-
-Para começar rapidamente, consulte o **[QUICKSTART.md](QUICKSTART.md)**
-
-**Resumo:**
+**Primeiro acesso** (dar permissão ao script):
 
 ```bash
-# Terminal 1 - Backend
-./start-backend.sh
-
-# Terminal 2 - Frontend
-./start-frontend.sh
+chmod +x executar.sh
 ```
 
-Acesse: `http://localhost:8000`
-
-⚠️ **IMPORTANTE**: O frontend requer que o backend esteja rodando!
-
----
-
-### 🖥️ Sistema CLI Original
+**Executar o sistema:**
 
 ```bash
 ./executar.sh
 # ou
 python3 main.py
+# ou
+python main.py
 ```
-
----
-
-### 📚 Documentação Detalhada
-
-- **[QUICKSTART.md](QUICKSTART.md)** - Guia rápido de início
-- **[backend/README.md](backend/README.md)** - Documentação completa da API
-  - Instalação detalhada
-  - Lista completa de endpoints
-  - Exemplos de requisições
 
 ## 🎯 Funcionalidades
 
-### 🌐 Sistema Web (API + Frontend)
+### Gestão de Alunos
 
-**Dashboard Principal**
+- Matricular novos alunos
+- Listar e buscar alunos
+- Atualizar informações
+- Gerar relatórios
+- Excluir registros
 
-- Acesso rápido aos módulos de Alunos, Professores e Turmas
-- Interface intuitiva e responsiva
+### Gestão de Professores
 
-**Gestão de Alunos**
+- Cadastrar professores
+- Listar por turno e matéria
+- Atualizar dados
+- Remover professores
 
-- ✅ Visualização de estatísticas (total, média de idade)
-- ✅ Busca por nome ou matrícula
-- ✅ Adicionar/Editar/Excluir alunos
-- ✅ Geração de relatórios
+### Gestão de Turmas
 
-**Gestão de Professores**
+- Criar turmas por período
+- Controlar capacidade e sala
+- Buscar e atualizar turmas
+- Excluir turmas
 
-- ✅ Listagem completa de professores
-- ✅ Adicionar/Editar/Excluir professores
-- ✅ Visualização por turno e matéria
+## 💾 Dados
 
-**Gestão de Turmas**
-
-- ✅ Cadastro de turmas por período
-- ✅ Controle de capacidade e sala
-- ✅ Adicionar/Editar/Excluir turmas
-
-### 🖥️ Sistema CLI (Terminal)
-
-- Menu interativo completo
-- CRUD de Alunos, Professores e Turmas
-- Mesmos dados compartilhados com a API
-
-### 📡 API REST
-
-**18 endpoints disponíveis** para gerenciamento completo. Veja a lista completa em [backend/README.md](backend/README.md)
-
-## 💾 Dados Persistentes
-
-Todos os dados são automaticamente salvos em arquivos JSON na pasta `modulos/` (compartilhada entre CLI e API):
+Os dados são salvos em arquivos JSON na pasta `modulos/`:
 
 - `modulos/alunos/alunos.json`
 - `modulos/professores/professores.json`
 - `modulos/turmas/turmas.json`
 
-**✨ Vantagem**: O sistema CLI e a API compartilham os mesmos dados! Qualquer alteração feita em um é refletida no outro.
+## 🏗️ Estrutura do Projeto
+
+```
+gestao-escolar-comunitaria-api/
+├── main.py                    # Sistema CLI principal
+├── executar.sh               # Script de execução
+├── modulos/                   # Módulos de dados
+│   ├── alunos/
+│   ├── professores/
+│   └── turmas/
+├── backend/                   # API REST (extra)
+└── frontend/                  # Interface Web (extra)
+```
 
 ## 🐛 Solução de Problemas
 
-### Backend não inicia
+### Erro: "SyntaxError: invalid syntax" próximo a "match"
 
-**Erro**: `ModuleNotFoundError: No module named 'flask'`
+**Causa**: Python 3.9 ou inferior.
 
-**Solução**:
-
-```bash
-cd backend
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### CORS Error no Frontend
-
-**Erro**: `Access to fetch has been blocked by CORS policy`
-
-**Solução**: Certifique-se de que o backend está rodando (`./start-backend.sh`)
-
-### Frontend não carrega dados
-
-**Causa**: Backend não está rodando
-
-**Solução**: Execute `./start-backend.sh` antes de abrir o frontend
-
-### Erro: "SyntaxError: invalid syntax" próximo a "match" (Sistema CLI)
-
-**Causa**: Você está usando Python 3.9 ou inferior.
-
-**Solução**: Use `python3`:
+**Solução**: Use `python3` ao invés de `python`:
 
 ```bash
 python3 main.py
 ```
 
-## 🎨 Tecnologias Utilizadas
+### Instalar Python 3.10+ (se necessário)
 
-### Backend
+Verifique qual Python está instalado:
+
+```bash
+python3 --version
+```
+
+**macOS (Homebrew)**:
+
+```bash
+brew install python@3.10
+```
+
+**Linux (Ubuntu/Debian)**:
+
+```bash
+sudo apt update
+sudo apt install python3.10
+```
+
+**Windows**:
+
+1. Baixe em [python.org/downloads](https://www.python.org/downloads/)
+2. ✅ Marque "Add Python to PATH" no instalador
+3. Verifique: `python --version`
+
+## 🎨 Tecnologias
 
 - Python 3.10+
-- Flask (Framework Web)
-- Flask-CORS (Cross-Origin Resource Sharing)
 - JSON (Persistência de dados)
-
-### Frontend
-
-- HTML5
-- CSS3 (Design responsivo)
-- JavaScript (Vanilla JS)
-- Fetch API (Requisições HTTP)
-
-## 📚 Documentação Adicional
-
-- [Documentação do Backend](backend/README.md) - Detalhes completos da API
-- [Documentação Flask](https://flask.palletsprojects.com/)
-
-## 🌟 Próximas Melhorias
-
-- [ ] Autenticação e autorização de usuários
-- [ ] Banco de dados (SQLite/PostgreSQL)
-- [ ] Vinculação de alunos às turmas
-- [ ] Upload de fotos de perfil
-- [ ] Exportação de relatórios em PDF
-- [ ] Dashboard com gráficos
-- [ ] Testes automatizados
-
-## 📝 Licença
-
-Projeto acadêmico desenvolvido para fins educacionais - CESAR School 2025
 
 ---
 
-**Desenvolvido com ❤️ pela equipe do projeto**
+## 🌐 Extras: Sistema Web (Backend + Frontend)
+
+O projeto também inclui uma **API REST** e **interface web** como extensões do sistema CLI.
+
+### 🚀 Como executar o sistema web
+
+**Primeiro acesso:**
+
+```bash
+chmod +x start-backend.sh start-frontend.sh
+```
+
+**Executar (2 terminais):**
+
+```bash
+# Terminal 1 - Backend (porta 5000)
+./start-backend.sh
+
+# Terminal 2 - Frontend (porta 8000)
+./start-frontend.sh
+```
+
+Acesse: `http://localhost:8000`
+
+### 🛠️ Tecnologias Web
+
+**Backend:** Flask, Flask-CORS  
+**Frontend:** HTML5, CSS3, JavaScript (Vanilla)
+
+### 📡 Endpoints da API REST
+
+A API REST está disponível em `http://localhost:5000/api`
+
+#### 👨‍🎓 Alunos
+
+- `GET /api/alunos` - Lista todos os alunos
+- `GET /api/alunos/<matricula>` - Busca aluno por matrícula
+- `POST /api/alunos` - Adiciona novo aluno
+- `PUT /api/alunos/<matricula>` - Atualiza aluno
+- `DELETE /api/alunos/<matricula>` - Exclui aluno
+- `GET /api/alunos/buscar?termo=<texto>` - Busca por nome ou matrícula
+- `GET /api/alunos/relatorio` - Relatório geral de alunos
+
+#### 👨‍🏫 Professores
+
+- `GET /api/professores` - Lista todos os professores
+- `GET /api/professores/<id>` - Busca professor por ID
+- `POST /api/professores` - Adiciona novo professor
+- `PUT /api/professores/<id>` - Atualiza professor
+- `DELETE /api/professores/<id>` - Exclui professor
+
+#### 📚 Turmas
+
+- `GET /api/turmas` - Lista todas as turmas
+- `GET /api/turmas/<cod_turma>` - Busca turma por código
+- `POST /api/turmas` - Adiciona nova turma
+- `PUT /api/turmas/<cod_turma>` - Atualiza turma
+- `DELETE /api/turmas/<cod_turma>` - Exclui turma
+- `GET /api/turmas/relatorio` - Relatório geral de turmas
+
+#### 📊 Relatório Geral
+
+- `GET /api/relatorio-geral` - Relatório integrado (alunos por turma, médias, estatísticas)
+
+### 📝 Exemplos de Uso da API
+
+**Adicionar Aluno:**
+
+```json
+POST /api/alunos
+{
+  "Nome": "João Silva",
+  "Idade": "20",
+  "Genero": "Masculino",
+  "Curso": "Engenharia",
+  "Periodo": "2025.1"
+}
+```
+
+**Adicionar Professor:**
+
+```json
+POST /api/professores
+{
+  "nome": "Maria Santos",
+  "turno": "Manhã",
+  "materia": "Matemática"
+}
+```
+
+**Adicionar Turma:**
+
+```json
+POST /api/turmas
+{
+  "periodo": "2025.1",
+  "sala": "101",
+  "turno": "MANHÃ",
+  "capacidade": 30
+}
+```
+
+### ⚙️ Instalação do Backend (Detalhes)
+
+```bash
+# Criar ambiente virtual
+python3 -m venv backend/venv
+
+# Ativar ambiente virtual
+# macOS/Linux:
+source backend/venv/bin/activate
+# Windows:
+backend\venv\Scripts\activate
+
+# Instalar dependências
+pip install -r backend/requirements.txt
+```
+
+### 🐛 Troubleshooting Web
+
+- **Flask não encontrado**: `cd backend && source venv/bin/activate && pip install -r requirements.txt`
+- **CORS Error**: Certifique-se que o backend está rodando na porta 5000
+- **Dados não carregam**: Backend deve estar ativo antes de acessar o frontend
+- **Porta 5000 em uso**: Altere a porta no arquivo `backend/app.py` (última linha)
+- **Porta 8000 em uso**: Pare outros servidores ou use `python3 -m http.server 8080` (porta diferente)
+
+---

@@ -30,7 +30,7 @@ async function carregarTurmas() {
     const turmas = await response.json();
 
     exibirTurmas(turmas);
-    atualizarEstatisticas(turmas);
+    atualizarEstatisticas();
   } catch (error) {
     console.error("Erro ao carregar turmas:", error);
     mostrarAlerta(
@@ -77,8 +77,18 @@ function exibirTurmas(turmas) {
   });
 }
 
-function atualizarEstatisticas(turmas) {
-  document.getElementById("totalTurmas").textContent = turmas.length;
+function atualizarEstatisticas() {
+  try {
+    fetch(`${API_URL}/turmas/relatorio`)
+      .then((response) => response.json())
+      .then((relatorio) => {
+        document.getElementById("totalTurmas").textContent = relatorio.total;
+        document.getElementById("capacidadeTotal").textContent =
+          relatorio.capacidade_total;
+      });
+  } catch (error) {
+    console.error("Erro ao carregar estatísticas:", error);
+  }
 }
 
 function abrirModalAdicionar() {
@@ -179,6 +189,33 @@ async function excluirTurma(codigo, periodo) {
   } catch (error) {
     console.error("Erro ao excluir turma:", error);
     mostrarAlerta("Erro ao excluir turma", "error");
+  }
+}
+
+async function gerarRelatorio() {
+  try {
+    const response = await fetch(`${API_URL}/turmas/relatorio`);
+    const relatorio = await response.json();
+
+    let mensagem = `📊 RELATÓRIO GERAL DE TURMAS\n\n`;
+    mensagem += `Total de turmas: ${relatorio.total}\n`;
+    mensagem += `Total de salas alocadas: ${relatorio.total_salas}\n`;
+    mensagem += `Capacidade total: ${relatorio.capacidade_total} alunos\n\n`;
+
+    mensagem += `Turmas por período:\n`;
+    for (const [periodo, qtd] of Object.entries(relatorio.periodos)) {
+      mensagem += `  • ${periodo}: ${qtd} turma(s)\n`;
+    }
+
+    mensagem += `\nTurmas por turno:\n`;
+    for (const [turno, qtd] of Object.entries(relatorio.turnos)) {
+      mensagem += `  • ${turno}: ${qtd} turma(s)\n`;
+    }
+
+    alert(mensagem);
+  } catch (error) {
+    console.error("Erro ao gerar relatório:", error);
+    mostrarAlerta("Erro ao gerar relatório", "error");
   }
 }
 
