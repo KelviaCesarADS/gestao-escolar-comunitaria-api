@@ -138,7 +138,31 @@ sudo apt install python3.10
 
 ## 🌐 Extras: Sistema Web (Backend + Frontend)
 
-O projeto também inclui uma **API REST** e **interface web** como extensões do sistema CLI.
+O projeto inclui uma **API REST** e uma **interface web** que podem ser executadas facilmente usando os scripts fornecidos.
+
+### 🚀 Como executar o sistema web
+
+**Primeiro acesso:**
+
+```bash
+chmod +x start-backend.sh start-frontend.sh
+```
+
+**Execução recomendada (2 terminais):**
+
+```bash
+# Terminal 1 - Backend (porta 5000)
+./start-backend.sh
+# Este script cria o ambiente virtual, instala as dependências e inicia o backend automaticamente.
+
+# Terminal 2 - Frontend (porta 8000)
+./start-frontend.sh
+# Este script inicia o servidor web estático para o frontend.
+```
+
+Acesse: [http://localhost:8000](http://localhost:8000)
+
+> **Observação:** Não é necessário instalar dependências manualmente para o backend. O script `start-backend.sh` faz todo o processo automaticamente.
 
 ### 🚀 Como executar o sistema web
 
@@ -240,18 +264,15 @@ POST /api/turmas
 
 ### ⚙️ Instalação do Backend (Detalhes)
 
+> **Instalação manual (opcional):**
+> Se preferir instalar manualmente:
+
 ```bash
-# Criar ambiente virtual
-python3 -m venv backend/venv
-
-# Ativar ambiente virtual
-# macOS/Linux:
-source backend/venv/bin/activate
-# Windows:
-backend\venv\Scripts\activate
-
-# Instalar dependências
-pip install -r backend/requirements.txt
+cd backend
+python3 -m venv venv
+source venv/bin/activate  # macOS/Linux
+# ou backend\venv\Scripts\activate  # Windows
+pip install -r requirements.txt
 ```
 
 ### 🐛 Troubleshooting Web
