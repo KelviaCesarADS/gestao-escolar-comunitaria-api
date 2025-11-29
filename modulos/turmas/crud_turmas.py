@@ -1,5 +1,6 @@
 import json
 import os
+from relatorios import menu_relatorioturma
 
 ARQUIVO_PASTA = os.path.join(os.path.dirname(__file__), "turmas.json")
 
@@ -22,7 +23,8 @@ def menu_turmas():
         print("[2] Atualizar uma turma")
         print("[3] Deletar uma turma")
         print("[4] Listar turmas")
-        print("[5] Sair")
+        print("[5] Relátorios das turmas")
+        print("[6] Sair")
         opcao = int(input("Informe sua escolha: "))
         match opcao:
             case 1:
@@ -48,6 +50,9 @@ def menu_turmas():
                     else:
                         opcao = input(int(print("Opção inválida, tente novamente.")))
             case 5:
+                print("Acessando menu de relátorios da turma.")
+                menu_relatorioturma()
+            case 6:
                 print("Saindo...")
                 break
             case __:
@@ -149,7 +154,7 @@ def atualizar_turma():
         cod_turma = int(input("Informe o ID da turma que será atualizada: "))
         for t in turmas:
             if t["cod_turma"] == cod_turma:
-                print(f"Editando turma de ano\serie {t['periodo']} e sala {t['sala']}")
+                print(f"Editando turma de período {t['periodo']} e sala {t['sala']}")
                 while True:
                     print("O que você gostaria de atualizar?")
                     print("[1] Período")
@@ -169,7 +174,7 @@ def atualizar_turma():
                                     print("Informe o período novamente no formato indicado! (Ex:2026.6)")
                         case 2:
                             while True:
-                                t['sala'] = input("Nova informação: ")
+                                t['sala'] = int(input("Nova informação: "))
                                 if t['sala'] > 0:
                                     break
                                 else:
@@ -185,7 +190,7 @@ def atualizar_turma():
                                     print("Turnos devem ser MANHÂ, TARDE OU NOITE. Informe novamente!")
                         case 4:
                             while True:
-                                t['capacidade'] = input("Nova informação: ")
+                                t['capacidade'] = int(input("Nova informação: "))
                                 if t['periodo'] > 0:
                                     break
                                 else:
