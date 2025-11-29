@@ -49,6 +49,7 @@ def adicionar_alunos():
     genero_aluno = input("\nDigite o gênero do aluno: ")
     curso_aluno = input("\nQual o curso que o aluno está fazendo: ")
     periodo_aluno = input("\nQual o período que o aluno está: ")
+    turma_aluno = input("\nCódigo da turma (deixe em branco se não souber): ").strip()
 
     aluno = {
         "Matricula": num_matricula,
@@ -58,6 +59,12 @@ def adicionar_alunos():
         "Curso": curso_aluno,
         "Periodo": periodo_aluno
     }
+    
+    if turma_aluno:
+        try:
+            aluno["cod_turma"] = int(turma_aluno)
+        except ValueError:
+            pass
 
     lista_de_alunos.append(aluno)
     num_matricula += 1
@@ -99,6 +106,7 @@ def atualizar_lista_alunos():
         novo_genero = input(f"Novo Gênero: ({aluno_encontrado['Genero']}): ")
         novo_curso = input(f"Novo Curso: ({aluno_encontrado['Curso']}): ")
         novo_periodo = input(f"Novo Periodo ({aluno_encontrado['Periodo']}): ")
+        nova_turma = input(f"Código da turma (atual: {aluno_encontrado.get('cod_turma', 'Nenhuma')}): ").strip()
 
         if novo_nome:
             aluno_encontrado["Nome"] = novo_nome
@@ -114,6 +122,12 @@ def atualizar_lista_alunos():
         
         if novo_periodo:
             aluno_encontrado["Periodo"] = novo_periodo
+        
+        if nova_turma:
+            try:
+                aluno_encontrado["cod_turma"] = int(nova_turma)
+            except ValueError:
+                pass
             
         print(f"\n Dados da matrícula {matricula_procurada} atualizados com sucesso!")
         salvar_dados()
@@ -234,4 +248,3 @@ while True:
 
     else:
         print("Valor inválido! Selecione outra opção: ")
-    

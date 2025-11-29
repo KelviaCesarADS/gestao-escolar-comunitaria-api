@@ -204,3 +204,4 @@ def atualizar_turma():
 
 if __name__ == "__main__":
     menu_turmas()
+    

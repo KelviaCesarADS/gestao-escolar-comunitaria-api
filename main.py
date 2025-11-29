@@ -16,29 +16,34 @@ def main():
         print("\n1 - Gestão de Alunos")
         print("2 - Gestão de Professores")
         print("3 - Gestão de Turmas")
-        print("4 - Sair do Sistema")
+        print("4 - Relatório de Integração")
+        print("5 - Sair do Sistema")
         
         opcao = input("\nEscolha uma opção: ").strip()
         
         if opcao == "1":
-            print("\n🔄 Iniciando sistema de Alunos...")
+            print("\n Iniciando sistema de Alunos...")
             subprocess.run([python_cmd, "modulos/alunos/crud_alunos.py"])
             
         elif opcao == "2":
-            print("\n🔄 Iniciando sistema de Professores...")
+            print("\n Iniciando sistema de Professores...")
             subprocess.run([python_cmd, "modulos/professores/crud_professores.py"])
             
         elif opcao == "3":
-            print("\n🔄 Iniciando sistema de Turmas...")
+            print("\n Iniciando sistema de Turmas...")
             subprocess.run([python_cmd, "modulos/turmas/crud_turmas.py"])
             
         elif opcao == "4":
-            print("\n✅ Encerrando o sistema...")
-            print("Até logo! 👋")
+            print("\n Gerando Relatório de Integração...")
+            subprocess.run([python_cmd, "relatorio_integracao.py"])
+            
+        elif opcao == "5":
+            print("\n Encerrando o sistema...")
+            print("Até logo!")
             break
             
         else:
-            print("\n❌ Opção inválida! Tente novamente.")
+            print("\n Opção inválida! Tente novamente.")
 
 if __name__ == "__main__":
     main()
