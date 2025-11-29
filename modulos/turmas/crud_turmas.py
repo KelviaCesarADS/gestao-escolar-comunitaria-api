@@ -154,7 +154,7 @@ def atualizar_turma():
         cod_turma = int(input("Informe o ID da turma que será atualizada: "))
         for t in turmas:
             if t["cod_turma"] == cod_turma:
-                print(f"Editando turma de ano\serie {t['periodo']} e sala {t['sala']}")
+                print(f"Editando turma de período {t['periodo']} e sala {t['sala']}")
                 while True:
                     print("O que você gostaria de atualizar?")
                     print("[1] Período")
