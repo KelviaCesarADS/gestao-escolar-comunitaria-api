@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Professores</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="page-header">
+        <h1>👨‍🏫 Gestão de Professores</h1>
+        <a href="../index.html" class="btn btn-secondary">← Voltar ao Início</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total de Professores</h3>
+        <div class="stat-value" id="totalProfessores">0</div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="content-section">
+      <button class="btn btn-success" onclick="abrirModalAdicionar()">➕ Novo Professor</button>
+    </div>
+
+    <!-- Alert Messages -->
+    <div id="alertContainer"></div>
+
+    <!-- Table -->
+    <div class="content-section">
+      <h2>Lista de Professores</h2>
+      <div id="loadingProfessores" class="loading hidden"></div>
+      <div id="emptyState" class="empty-state hidden">Nenhum professor cadastrado</div>
+      <table id="tabelaProfessores" class="hidden">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Turno</th>
+            <th>Matéria</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTabela"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Modal Adicionar/Editar -->
+  <div id="modalProfessor" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitulo">Adicionar Professor</h2>
+        <button class="close-modal" onclick="fecharModal()">✖</button>
+      </div>
+      <form id="formProfessor" onsubmit="salvarProfessor(event)">
+        <input type="hidden" id="professorId">
+
+        <div class="form-group">
+          <label for="professorNome">Nome *</label>
+          <input type="text" id="professorNome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="professorTurno">Turno *</label>
+          <select id="professorTurno" required>
+            <option value="">Selecione...</option>
+            <option value="Manhã">Manhã</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noite">Noite</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="professorMateria">Matéria *</label>
+          <input type="text" id="professorMateria" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success">💾 Salvar</button>
+          <button type="button" class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 - Sistema de Gestão Escolar Comunitária</p>
+    </div>
+  </footer>
+
+  <script src="../js/professores.js"></script>
+</body>
+
+</html>
