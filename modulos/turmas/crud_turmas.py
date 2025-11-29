@@ -174,7 +174,7 @@ def atualizar_turma():
                                     print("Informe o período novamente no formato indicado! (Ex:2026.6)")
                         case 2:
                             while True:
-                                t['sala'] = input("Nova informação: ")
+                                t['sala'] = int(input("Nova informação: "))
                                 if t['sala'] > 0:
                                     break
                                 else:
@@ -190,7 +190,7 @@ def atualizar_turma():
                                     print("Turnos devem ser MANHÂ, TARDE OU NOITE. Informe novamente!")
                         case 4:
                             while True:
-                                t['capacidade'] = input("Nova informação: ")
+                                t['capacidade'] = int(input("Nova informação: "))
                                 if t['periodo'] > 0:
                                     break
                                 else:
