@@ -40,6 +40,9 @@ chmod +x executar.sh
 ./executar.sh
 # ou
 python3 main.py
+# ou
+python main.py
+```
 
 ## 🎯 Funcionalidades
 
@@ -75,7 +78,7 @@ Os dados são salvos em arquivos JSON na pasta `modulos/`:
 
 ## 🏗️ Estrutura do Projeto
 
-```
+```text
 gestao-escolar-comunitaria-api/
 ├── main.py                    # Sistema CLI principal
 ├── executar.sh               # Script de execução
