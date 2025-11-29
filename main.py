@@ -1,14 +1,12 @@
 import subprocess
 
 def cabecalho(msg):
-    """Exibe um cabeçalho formatado"""
     tam = len(msg) + 4
     print("\n" + "=" * tam)
     print(f"  {msg}")
     print("=" * tam)
 
 def main():
-    """Menu principal que chama cada sistema"""
     python_cmd = "python3"
     
     while True:

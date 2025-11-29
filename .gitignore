@@ -1,11 +1,9 @@
 tempCodeRunnerFile.py
 
-# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Distribution / packaging
 .Python
 build/
 develop-eggs/
@@ -23,7 +21,6 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual environments
 venv/
 env/
 ENV/
