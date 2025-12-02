@@ -1,133 +1,100 @@
 # 🎓 Sistema de Gestão Escolar Comunitária
 
-> **Projeto Acadêmico** | CESAR School | Fundamentos da Programação | CESAR School | Python 🐍
+> **Projeto Acadêmico** | CESAR School | Fundamentos da Programação | Python 🐍
 
-Sistema completo de gestão escolar desenvolvido em Python, com módulos independentes para gerenciamento de **alunos**, **professores** e **turmas**. Projeto colaborativo que implementa operações CRUD completas com persistência de dados em JSON.
+Sistema de gestão escolar desenvolvido em Python com interface CLI para gerenciamento de **alunos**, **professores** e **turmas**. Implementa operações CRUD completas com persistência de dados em JSON.
 
 ## 👥 Equipe de Desenvolvimento
 
 - Caio Catão
 - Caio Martins
 - Gustavo Cassemiro
-- Kelvia Santos
+- Kelvia Santos (Líder)
 - Luís Felipe
 - Mateus Henrique
 - Priscila Pontes
 
-### Nome da Líder
-
-- Kelvia Santos
-
 ## 📋 Características
 
-- ✅ **CRUD Completo de Alunos**: Matrícula, listagem, atualização, busca, relatórios e exclusão
-- ✅ **CRUD Completo de Professores**: Cadastro, listagem, atualização e remoção
-- ✅ **CRUD Completo de Turmas**: Cadastro, listagem, busca, atualização e exclusão
-- ✅ **Persistência de Dados**: Todos os dados são salvos em arquivos JSON
-- ✅ **Módulos Independentes**: Cada sistema pode funcionar de forma autônoma
+- ✅ **Sistema CLI Interativo**: Menu completo no terminal
+- ✅ **CRUD Completo**: Gerenciamento de alunos, professores e turmas
+- ✅ **Persistência em JSON**: Dados salvos automaticamente
+- ✅ **Relatórios**: Geração de relatórios por módulo
 
 ## ⚠️ Requisitos
 
-- **Python 3.10 ou superior** (devido ao uso de `match/case`)
-- Sistema testado com Python 3.14.0, 3.12.3
-
-### Verificar versão do Python
-
-```bash
-python3 --version
-```
+- **Python 3.10 ou superior**
+- Verificar versão: `python3 --version`
 
 ## 🚀 Como Executar
 
-### Opção 1: Usando o script auxiliar (Mais fácil)
-
-Primeiro, dê permissão de execução ao script:
+**Primeiro acesso** (dar permissão ao script):
 
 ```bash
 chmod +x executar.sh
 ```
 
-Depois execute:
+**Executar o sistema:**
 
 ```bash
 ./executar.sh
-```
-
-### Opção 2: Usando python3 (Recomendado)
-
-```bash
+# ou
 python3 main.py
-```
-
-### Opção 3: Usando python (se configurado para 3.10+)
-
-```bash
+# ou
 python main.py
 ```
 
-## 📁 Estrutura do Projeto
+## 🎯 Funcionalidades
 
-```
+### Gestão de Alunos
+
+- Matricular novos alunos
+- Listar e buscar alunos
+- Atualizar informações
+- Gerar relatórios
+- Excluir registros
+
+### Gestão de Professores
+
+- Cadastrar professores
+- Listar por turno e matéria
+- Atualizar dados
+- Remover professores
+
+### Gestão de Turmas
+
+- Criar turmas por período
+- Controlar capacidade e sala
+- Buscar e atualizar turmas
+- Excluir turmas
+
+## 💾 Dados
+
+Os dados são salvos em arquivos JSON na pasta `modulos/`:
+
+- `modulos/alunos/alunos.json`
+- `modulos/professores/professores.json`
+- `modulos/turmas/turmas.json`
+
+## 🏗️ Estrutura do Projeto
+
+```text
 gestao-escolar-comunitaria-api/
-├── main.py                    # Arquivo principal (orquestrador)
-├── executar.sh               # Script auxiliar para execução
-├── modulos/
+├── main.py                    # Sistema CLI principal
+├── executar.sh               # Script de execução
+├── modulos/                   # Módulos de dados
 │   ├── alunos/
-│   │   ├── crud_alunos.py   # Sistema de gestão de alunos
-│   │   └── alunos.json      # Dados dos alunos
 │   ├── professores/
-│   │   ├── crud_professores.py  # Sistema de gestão de professores
-│   │   └── professores.json     # Dados dos professores
 │   └── turmas/
-│       ├── crud_turmas.py   # Sistema de gestão de turmas
-│       └── turmas.json      # Dados das turmas
-└── README.md
+├── backend/                   # API REST (extra)
+└── frontend/                  # Interface Web (extra)
 ```
 
-## 🎯 Navegação no Sistema
-
-```
-╔═══════════════════════════════════════╗
-║   GESTÃO ESCOLAR COMUNITÁRIA         ║
-╠═══════════════════════════════════════╣
-║  1 - Gestão de Alunos                ║
-║  2 - Gestão de Professores           ║
-║  3 - Gestão de Turmas                ║
-║  4 - Sair do Sistema                 ║
-╚═══════════════════════════════════════╝
-```
-
-### Sistema de Alunos
-
-- Matricular aluno
-- Listar alunos matriculados
-- Atualizar cadastro
-- Buscar aluno (por matrícula ou nome)
-- Gerar relatório geral
-- Excluir matrícula
-
-### Sistema de Professores
-
-- Adicionar professor
-- Listar professores
-- Atualizar dados do professor
-- Gerar relatório geral
-- Deletar professor
-
-### Sistema de Turmas
-
-- Cadastrar nova turma
-- Listar todas as turmas
-- Buscar uma turma específica
-- Atualizar dados da turma
-- Gerar relatório geral
-- Deletar turma
-
-## 🔧 Solução de Problemas
+## 🐛 Solução de Problemas
 
 ### Erro: "SyntaxError: invalid syntax" próximo a "match"
 
-**Causa**: Você está usando Python 3.9 ou inferior.
+**Causa**: Python 3.9 ou inferior.
 
 **Solução**: Use `python3` ao invés de `python`:
 
@@ -135,43 +102,185 @@ gestao-escolar-comunitaria-api/
 python3 main.py
 ```
 
-### Verificar qual Python está sendo usado
+### Instalar Python 3.10+ (se necessário)
+
+Verifique qual Python está instalado:
 
 ```bash
-which python
-which python3
+python3 --version
 ```
 
-### Instalar Python 3.14 (se necessário)
-
-**macOS (usando Homebrew)**:
+**macOS (Homebrew)**:
 
 ```bash
-brew install python@3.14
+brew install python@3.10
 ```
 
 **Linux (Ubuntu/Debian)**:
 
 ```bash
 sudo apt update
-sudo apt install python3.14
+sudo apt install python3.10
 ```
 
 **Windows**:
 
-1. Baixe o instalador oficial: [python.org/downloads](https://www.python.org/downloads/)
-2. Execute o instalador
-3. ✅ **IMPORTANTE**: Marque a opção "Add Python to PATH"
-4. Clique em "Install Now"
-5. Após a instalação, abra o CMD ou PowerShell e verifique:
-   ```bash
-   python --version
-   ```
+1. Baixe em [python.org/downloads](https://www.python.org/downloads/)
+2. ✅ Marque "Add Python to PATH" no instalador
+3. Verifique: `python --version`
 
-## 💾 Dados Persistentes
+## 🎨 Tecnologias
 
-Todos os dados são automaticamente salvos em arquivos JSON:
+- Python 3.10+
+- JSON (Persistência de dados)
 
-- `modulos/alunos/alunos.json`
-- `modulos/professores/professores.json`
-- `modulos/turmas/turmas.json`
+---
+
+## 🌐 Extras: Sistema Web (Backend + Frontend)
+
+O projeto inclui uma **API REST** e uma **interface web** que podem ser executadas facilmente usando os scripts fornecidos.
+
+### 🚀 Como executar o sistema web
+
+**Primeiro acesso:**
+
+```bash
+chmod +x start-backend.sh start-frontend.sh
+```
+
+**Execução recomendada (2 terminais):**
+
+```bash
+# Terminal 1 - Backend (porta 5000)
+./start-backend.sh
+# Este script cria o ambiente virtual, instala as dependências e inicia o backend automaticamente.
+
+# Terminal 2 - Frontend (porta 8000)
+./start-frontend.sh
+# Este script inicia o servidor web estático para o frontend.
+```
+
+Acesse: [http://localhost:8000](http://localhost:8000)
+
+> **Observação:** Não é necessário instalar dependências manualmente para o backend. O script `start-backend.sh` faz todo o processo automaticamente.
+
+### 🚀 Como executar o sistema web
+
+**Primeiro acesso:**
+
+```bash
+chmod +x start-backend.sh start-frontend.sh
+```
+
+**Executar (2 terminais):**
+
+```bash
+# Terminal 1 - Backend (porta 5000)
+./start-backend.sh
+
+# Terminal 2 - Frontend (porta 8000)
+./start-frontend.sh
+```
+
+Acesse: `http://localhost:8000`
+
+### 🛠️ Tecnologias Web
+
+**Backend:** Flask, Flask-CORS  
+**Frontend:** HTML5, CSS3, JavaScript (Vanilla)
+
+### 📡 Endpoints da API REST
+
+A API REST está disponível em `http://localhost:5000/api`
+
+#### 👨‍🎓 Alunos
+
+- `GET /api/alunos` - Lista todos os alunos
+- `GET /api/alunos/<matricula>` - Busca aluno por matrícula
+- `POST /api/alunos` - Adiciona novo aluno
+- `PUT /api/alunos/<matricula>` - Atualiza aluno
+- `DELETE /api/alunos/<matricula>` - Exclui aluno
+- `GET /api/alunos/buscar?termo=<texto>` - Busca por nome ou matrícula
+- `GET /api/alunos/relatorio` - Relatório geral de alunos
+
+#### 👨‍🏫 Professores
+
+- `GET /api/professores` - Lista todos os professores
+- `GET /api/professores/<id>` - Busca professor por ID
+- `POST /api/professores` - Adiciona novo professor
+- `PUT /api/professores/<id>` - Atualiza professor
+- `DELETE /api/professores/<id>` - Exclui professor
+
+#### 📚 Turmas
+
+- `GET /api/turmas` - Lista todas as turmas
+- `GET /api/turmas/<cod_turma>` - Busca turma por código
+- `POST /api/turmas` - Adiciona nova turma
+- `PUT /api/turmas/<cod_turma>` - Atualiza turma
+- `DELETE /api/turmas/<cod_turma>` - Exclui turma
+- `GET /api/turmas/relatorio` - Relatório geral de turmas
+
+#### 📊 Relatório Geral
+
+- `GET /api/relatorio-geral` - Relatório integrado (alunos por turma, médias, estatísticas)
+
+### 📝 Exemplos de Uso da API
+
+**Adicionar Aluno:**
+
+```json
+POST /api/alunos
+{
+  "Nome": "João Silva",
+  "Idade": "20",
+  "Genero": "Masculino",
+  "Curso": "Engenharia",
+  "Periodo": "2025.1"
+}
+```
+
+**Adicionar Professor:**
+
+```json
+POST /api/professores
+{
+  "nome": "Maria Santos",
+  "turno": "Manhã",
+  "materia": "Matemática"
+}
+```
+
+**Adicionar Turma:**
+
+```json
+POST /api/turmas
+{
+  "periodo": "2025.1",
+  "sala": "101",
+  "turno": "MANHÃ",
+  "capacidade": 30
+}
+```
+
+### ⚙️ Instalação do Backend (Detalhes)
+
+> **Instalação manual (opcional):**
+> Se preferir instalar manualmente:
+
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate  # macOS/Linux
+# ou backend\venv\Scripts\activate  # Windows
+pip install -r requirements.txt
+```
+
+### 🐛 Troubleshooting Web
+
+- **Flask não encontrado**: `cd backend && source venv/bin/activate && pip install -r requirements.txt`
+- **CORS Error**: Certifique-se que o backend está rodando na porta 5000
+- **Dados não carregam**: Backend deve estar ativo antes de acessar o frontend
+- **Porta 5000 em uso**: Altere a porta no arquivo `backend/app.py` (última linha)
+- **Porta 8000 em uso**: Pare outros servidores ou use `python3 -m http.server 8080` (porta diferente)
+
+---

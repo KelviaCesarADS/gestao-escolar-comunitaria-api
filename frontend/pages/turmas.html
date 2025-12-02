@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Turmas</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="page-header">
+        <h1>📚 Gestão de Turmas</h1>
+        <a href="../index.html" class="btn btn-secondary">← Voltar ao Início</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total de Turmas</h3>
+        <div class="stat-value" id="totalTurmas">0</div>
+      </div>
+      <div class="stat-card">
+        <h3>Capacidade Total</h3>
+        <div class="stat-value" id="capacidadeTotal">0</div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <button class="btn btn-success" onclick="abrirModalAdicionar()">➕ Nova Turma</button>
+      <button class="btn btn-warning" onclick="gerarRelatorio()">📊 Relatório</button>
+    </div>
+
+    <div id="alertContainer"></div>
+
+    <div class="content-section">
+      <h2>Lista de Turmas</h2>
+      <div id="loadingTurmas" class="loading hidden"></div>
+      <div id="emptyState" class="empty-state hidden">Nenhuma turma cadastrada</div>
+      <table id="tabelaTurmas" class="hidden">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Período</th>
+            <th>Sala</th>
+            <th>Turno</th>
+            <th>Capacidade</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTabela"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="modalTurma" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitulo">Adicionar Turma</h2>
+        <button class="close-modal" onclick="fecharModal()">✖</button>
+      </div>
+      <form id="formTurma" onsubmit="salvarTurma(event)">
+        <input type="hidden" id="turmaCodigo">
+
+        <div class="form-group">
+          <label for="turmaPeriodo">Período *</label>
+          <input type="text" id="turmaPeriodo" placeholder="Ex: 2025.1" required>
+        </div>
+
+        <div class="form-group">
+          <label for="turmaSala">Sala *</label>
+          <input type="text" id="turmaSala" placeholder="Ex: 101" required>
+        </div>
+
+        <div class="form-group">
+          <label for="turmaTurno">Turno *</label>
+          <select id="turmaTurno" required>
+            <option value="">Selecione...</option>
+            <option value="MANHÃ">Manhã</option>
+            <option value="TARDE">Tarde</option>
+            <option value="NOITE">Noite</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="turmaCapacidade">Capacidade *</label>
+          <input type="number" id="turmaCapacidade" required min="1">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success">💾 Salvar</button>
+          <button type="button" class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 - Sistema de Gestão Escolar Comunitária</p>
+    </div>
+  </footer>
+
+  <script src="../js/turmas.js"></script>
+</body>
+
+</html>

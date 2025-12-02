@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Alunos</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="page-header">
+        <h1>👨‍🎓 Gestão de Alunos</h1>
+        <a href="../index.html" class="btn btn-secondary">← Voltar ao Início</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total de Alunos</h3>
+        <div class="stat-value" id="totalAlunos">0</div>
+      </div>
+      <div class="stat-card">
+        <h3>Média de Idade</h3>
+        <div class="stat-value" id="mediaIdade">0</div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="search-section">
+        <input type="text" id="searchInput" placeholder="Buscar por nome ou matrícula...">
+        <button class="btn btn-primary" onclick="buscarAlunos()">🔍 Buscar</button>
+        <button class="btn btn-success" onclick="abrirModalAdicionar()">➕ Novo Aluno</button>
+        <button class="btn btn-warning" onclick="gerarRelatorio()">📊 Relatório</button>
+      </div>
+    </div>
+
+    <div id="alertContainer"></div>
+
+    <div class="content-section">
+      <h2>Lista de Alunos</h2>
+      <div id="loadingAlunos" class="loading hidden"></div>
+      <div id="emptyState" class="empty-state hidden">Nenhum aluno cadastrado</div>
+      <table id="tabelaAlunos" class="hidden">
+        <thead>
+          <tr>
+            <th>Matrícula</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Gênero</th>
+            <th>Curso</th>
+            <th>Período</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTabela"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="modalAluno" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitulo">Adicionar Aluno</h2>
+        <button class="close-modal" onclick="fecharModal()">✖</button>
+      </div>
+      <form id="formAluno" onsubmit="salvarAluno(event)">
+        <input type="hidden" id="alunoMatricula">
+
+        <div class="form-group">
+          <label for="alunoNome">Nome *</label>
+          <input type="text" id="alunoNome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="alunoIdade">Idade *</label>
+          <input type="number" id="alunoIdade" required min="1">
+        </div>
+
+        <div class="form-group">
+          <label for="alunoGenero">Gênero *</label>
+          <select id="alunoGenero" required>
+            <option value="">Selecione...</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="alunoCurso">Curso *</label>
+          <input type="text" id="alunoCurso" required>
+        </div>
+
+        <div class="form-group">
+          <label for="alunoPeriodo">Período *</label>
+          <input type="text" id="alunoPeriodo" placeholder="Ex: 2025.1" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success">💾 Salvar</button>
+          <button type="button" class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 - Sistema de Gestão Escolar Comunitária</p>
+    </div>
+  </footer>
+
+  <script src="../js/alunos.js"></script>
+</body>
+
+</html>
