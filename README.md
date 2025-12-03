@@ -64,6 +64,7 @@ python3 main.py
 - Criar turmas por período
 - Controlar capacidade e sala
 - Buscar e atualizar turmas
+- Gerar relatórios
 - Excluir turmas
 
 ## 💾 Dados
