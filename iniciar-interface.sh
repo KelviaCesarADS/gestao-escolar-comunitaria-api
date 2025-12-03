@@ -1,9 +1,9 @@
-echo " Iniciando Frontend da Gestão Escolar..."
+echo " Iniciando Interface da Gestão Escolar..."
 echo ""
 
-cd frontend
+cd interface
 
-echo " Frontend pronto!"
+echo " Interface pronta!"
 echo " Servidor rodando em: http://localhost:8000"
 echo ""
 echo " Para parar o servidor, pressione Ctrl+C"
