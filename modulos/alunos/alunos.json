@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "Matricula": 1,
+        "Nome": "Lucas",
+        "Idade": "32",
+        "Genero": "Masculino",
+        "Curso": "ADS",
+        "Periodo": "2025.1"
+    }
+]

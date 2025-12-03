@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo " Iniciando Backend da Gestão Escolar..."
+echo " Iniciando servidor da Gestão Escolar..."
 echo ""
 
 OS_NAME="$(uname -s)"
@@ -31,7 +31,7 @@ if [ "$OS_NAME" = "Linux" ]; then
     fi
 fi
 
-cd backend
+cd servidor
 
 VENV_DIR="venv"
 
@@ -72,13 +72,13 @@ if [ ! -f "$VENV_DIR/bin/pip" ]; then
 fi
 
 echo " Instalando dependências..."
-"$VENV_DIR/bin/pip" install -r requirements.txt --quiet
+"$VENV_DIR/bin/pip" install -r requisitos.txt --quiet
 if [ $? -ne 0 ]; then
     echo "[ERRO] Falha ao instalar dependências. Veja as mensagens acima."
     exit 1
 fi
 
-echo " Backend pronto!"
+echo " Servidor pronto!"
 echo " Servidor rodando em: http://localhost:5000"
 echo ""
 echo " Para parar o servidor, pressione Ctrl+C"

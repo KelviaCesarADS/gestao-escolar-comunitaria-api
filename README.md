@@ -40,8 +40,6 @@ chmod +x executar.sh
 ./executar.sh
 # ou
 python3 main.py
-# ou
-python main.py
 ```
 
 ## 🎯 Funcionalidades
@@ -66,6 +64,7 @@ python main.py
 - Criar turmas por período
 - Controlar capacidade e sala
 - Buscar e atualizar turmas
+- Gerar relatórios
 - Excluir turmas
 
 ## 💾 Dados
@@ -80,14 +79,17 @@ Os dados são salvos em arquivos JSON na pasta `modulos/`:
 
 ```text
 gestao-escolar-comunitaria-api/
-├── main.py                    # Sistema CLI principal
-├── executar.sh               # Script de execução
-├── modulos/                   # Módulos de dados
+├── main.py                  # Sistema CLI principal
+├── executar.sh              # Script de execução principal
+├── iniciar-servidor.sh      # Script para iniciar o backend (API REST)
+├── iniciar-interface.sh     # Script para iniciar a interface web
+├── modulos/                 # Módulos de dados e lógica
 │   ├── alunos/
 │   ├── professores/
 │   └── turmas/
-├── backend/                   # API REST (extra)
-└── frontend/                  # Interface Web (extra)
+├── servidor/                # Backend (API REST)
+├── interface/               # Interface Web (HTML, CSS, JS)
+└── relatorio_integracao.py  # Relatório integrado
 ```
 
 ## 🐛 Solução de Problemas
@@ -136,58 +138,38 @@ sudo apt install python3.10
 
 ---
 
-## 🌐 Extras: Sistema Web (Backend + Frontend)
+## 🌐 Extras: Sistema Web (API REST + Interface Web)
 
-O projeto inclui uma **API REST** e uma **interface web** que podem ser executadas facilmente usando os scripts fornecidos.
+O projeto inclui uma **API REST** e uma **interface web** que podem ser executadas facilmente usando os scripts em português.
 
 ### 🚀 Como executar o sistema web
 
 **Primeiro acesso:**
 
 ```bash
-chmod +x start-backend.sh start-frontend.sh
+chmod +x iniciar-servidor.sh iniciar-interface.sh
 ```
 
 **Execução recomendada (2 terminais):**
 
 ```bash
 # Terminal 1 - Backend (porta 5000)
-./start-backend.sh
+./iniciar-servidor.sh
 # Este script cria o ambiente virtual, instala as dependências e inicia o backend automaticamente.
 
-# Terminal 2 - Frontend (porta 8000)
-./start-frontend.sh
-# Este script inicia o servidor web estático para o frontend.
+# Terminal 2 - Interface Web (porta 8000)
+./iniciar-interface.sh
+# Este script inicia o servidor web estático para a interface.
 ```
 
 Acesse: [http://localhost:8000](http://localhost:8000)
 
-> **Observação:** Não é necessário instalar dependências manualmente para o backend. O script `start-backend.sh` faz todo o processo automaticamente.
-
-### 🚀 Como executar o sistema web
-
-**Primeiro acesso:**
-
-```bash
-chmod +x start-backend.sh start-frontend.sh
-```
-
-**Executar (2 terminais):**
-
-```bash
-# Terminal 1 - Backend (porta 5000)
-./start-backend.sh
-
-# Terminal 2 - Frontend (porta 8000)
-./start-frontend.sh
-```
-
-Acesse: `http://localhost:8000`
+> **Observação:** Não é necessário instalar dependências manualmente para o backend. O script `iniciar-servidor.sh` faz todo o processo automaticamente.
 
 ### 🛠️ Tecnologias Web
 
-**Backend:** Flask, Flask-CORS  
-**Frontend:** HTML5, CSS3, JavaScript (Vanilla)
+**Servidor:** Flask, Flask-CORS  
+**Interface:** HTML5, CSS3, JavaScript (Vanilla)
 
 ### 📡 Endpoints da API REST
 
@@ -268,19 +250,19 @@ POST /api/turmas
 > Se preferir instalar manualmente:
 
 ```bash
-cd backend
+cd servidor
 python3 -m venv venv
 source venv/bin/activate  # macOS/Linux
-# ou backend\venv\Scripts\activate  # Windows
-pip install -r requirements.txt
+# ou servidor\venv\Scripts\activate  # Windows
+pip install -r requisitos.txt
 ```
 
 ### 🐛 Troubleshooting Web
 
-- **Flask não encontrado**: `cd backend && source venv/bin/activate && pip install -r requirements.txt`
+- **Flask não encontrado**: `cd servidor && source venv/bin/activate && pip install -r requisitos.txt`
 - **CORS Error**: Certifique-se que o backend está rodando na porta 5000
 - **Dados não carregam**: Backend deve estar ativo antes de acessar o frontend
-- **Porta 5000 em uso**: Altere a porta no arquivo `backend/app.py` (última linha)
+  - **Porta 5000 em uso**: Altere a porta no arquivo `servidor/app.py` (última linha)
 - **Porta 8000 em uso**: Pare outros servidores ou use `python3 -m http.server 8080` (porta diferente)
 
 ---
