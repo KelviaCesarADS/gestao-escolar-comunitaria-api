@@ -84,4 +84,4 @@ echo ""
 echo " Para parar o servidor, pressione Ctrl+C"
 echo ""
 
-"$VENV_DIR/bin/python" aplicativo.py
+"$VENV_DIR/bin/python" app.py
